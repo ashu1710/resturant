@@ -1,0 +1,73 @@
+<!-- header start -->
+<header>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="main-menu">
+                    <div class="menu-left">
+                        <div class="navbar mobile_view_cart d-none">
+                            <%= link_to carts_path do %>
+                                <%= image_tag 'users/icon/cart.png', class: 'img-fluid blur-up  lazyloaded' %>
+                            <% end %>
+                        </div>
+                        <div class="brand-logo">
+                            <%= link_to root_path do %>
+                                <%= image_tag "users/icon/logo.png", class: "img-fluid blur-up lazyload", style: 'width: 65px;height: 65px' %>
+                            <% end %>
+                        </div>
+                    </div>
+                    <div class="menu-right pull-right">
+                        <div>
+                            <nav id="main-nav">
+                                <div class="toggle-nav"><i class="fa fa-bars sidebar-bar"></i></div>
+                                <ul id="main-menu" class="sm pixelstrap sm-horizontal">
+                                    <li>
+                                        <div class="mobile-back text-right">Back<i class="fa fa-angle-right pl-2" aria-hidden="true"></i></div>
+                                    </li>
+                                    <li>
+                                        <%= link_to "Home", root_path %>
+                                    </li>
+                                    <li>
+                                        <%= link_to "About Us", about_us_path %>
+                                    </li>
+                                    <li>
+                                        <%= link_to "Contact Us", contact_us_path %>
+                                    </li>
+                                    <li>
+                                        <%= link_to "Shopping", sub_category_list_path(3) %>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0);">Account</a>
+                                        <ul>
+                                            <li><%= link_to 'My Orders', my_account_path %></li>
+                                            <li></li>
+                                            <% if current_user.present? %>
+                                                <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
+                                            <% else %>
+                                                <li><%= link_to 'LogIn / Register', new_user_session_path %></li>
+                                            <% end %>
+                                        </ul>
+                                    </li>
+                                    <li><%= link_to 'List your Business', admin_session_path, style: "color: #ff4c3b" %></li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <div>
+                            <div class="icon-nav">
+                                <ul>
+                                    <li class="onhover-div desktop_view_cart">
+                                        <div>
+                                            <%= link_to carts_path do %>
+                                                <%= image_tag 'users/icon/cart.png', class: 'img-fluid blur-up lazyloaded' %>
+                                            <% end %>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

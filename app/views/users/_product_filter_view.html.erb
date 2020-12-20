@@ -1,0 +1,30 @@
+<% if @products.present? %>
+    <% @products.uniq.each do |product| %>
+        <div class="product-box">
+            <div class="img-wrapper">
+                <div class="front">
+                    <%= link_to product_details_path(product) do %>
+                        <%= image_tag product.images.first, class: 'img-fluid blur-up lazyload bg-img' %>
+                    <% end %>
+                </div>
+            </div>
+            <div class="product-detail">
+                <div class="rating"></div>
+                <h6><%= product.name %></h6>
+                <h4><%= 'Rs. ' + product.price.to_s %></h4>
+                <ul class="color-variant">
+                </ul>
+            </div>
+        </div>
+    <% end %>
+<% else %>
+    <div class="product-box">
+        <div class="img-wrapper">
+            <div class="front">
+                <%= image_tag 'no.jpg', class: 'img-fluid blur-up lazyload bg-img' %>
+            </div>
+        </div>
+        <div class="product-detail">
+        </div>
+    </div>
+<% end %>

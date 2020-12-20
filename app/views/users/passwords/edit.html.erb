@@ -1,0 +1,34 @@
+<%= render 'layouts/user_header' %>
+<!--section start-->
+<section class="login-page section-b-space">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <h3>Change Password</h3>
+                <div class="theme-card">
+                    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put, class: 'theme-form change_password_form' }) do |f| %>
+                        <%= f.hidden_field :reset_password_token %>
+                        <div class="form-group">
+                            <%= f.label :password, "New password" %>
+                            <%= f.password_field :password, autofocus: true, class: "required form-control" %>
+                        </div>
+                        <div class="form-group">
+                            <%= f.label :password_confirmation, "Confirm new password" %><br />
+                            <%= f.password_field :password_confirmation, autocomplete: "new-password",class: "required form-control" %>
+                        </div>
+                        <%= f.submit "Change my password", class: "btn btn-solid bnt-change-password-form" %>
+                    <% end %>
+                </div>
+            </div>
+            <div class="col-lg-6 right-login">
+                <h3>New Customer</h3>
+                <div class="theme-card authentication-right">
+                    <h6 class="title-font">Create A Account</h6>
+                    <p>Sign up for a free account at our store. Registration is quick and easy. To start shopping click register.</p>
+                    <%= link_to 'Create an Account', new_user_registration_path, class: 'btn btn-solid' %>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<%= render 'layouts/user_footer' %>

@@ -1,0 +1,28 @@
+<%= render 'layouts/admin_header' %>
+<%= render 'layouts/admin_side_bar' %>
+<section id="main-content">
+    <section class="wrapper">
+        <div class="row">
+            <div class="col-lg-12">
+                <section class="panel">
+                    <header class="panel-heading">
+                        Area Table
+                    </header>
+                    <%= link_to 'New', new_area_path, remote: true,class: 'btn btn-success new_area_btn' %>
+                    <table class="table table-striped table-advance table-area table-hover" id="dataTables-example">
+                        <thead>
+                          <tr>
+                            <th><i class="icon_profile"></i> City Name</th>
+                            <th><i class="icon_profile"></i> Area Name</th>
+                            <th><i class="icon_cogs"></i> Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            <%= render partial: "areas_data", collection: @areas, as: :area %> 
+                        </tbody>
+                    </table>
+                </section>
+            </div>
+        </div>           
+    </section>
+</section>

@@ -1,0 +1,45 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require css/bootstrap.min.css
+ *= require css/bootstrap-theme.css
+ *= require css/elegant-icons-style.scss
+ *= require css/style.scss
+ *= require css/style-responsive.css
+ *= require css/owl.carousel.css
+ *= require css/jquery-jvectormap-1.2.2.css
+ *= require css/fullcalendar.css
+ *= require css/widgets.css
+ *= require css/xcharts.min.css
+ *= require css/jquery-ui-1.10.4.min.css
+ *= require dataTables/jquery.dataTables
+ *= require toastr
+ */
+@import 'bootstrap';
+@import "font-awesome";
+@import "font-awesome-sprockets";
+
+.product-img{
+	height: 100px;
+	width: 100px;
+}
+.error{
+	color: red !important;
+}
+.anchor-tag-link{
+	color: white !important;
+}
+.anchor-tag-link:hover
+{
+	color: #34aadc !important;
+}

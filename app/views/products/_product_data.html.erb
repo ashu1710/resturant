@@ -1,0 +1,32 @@
+<tr class="tr_<%= product.id %>">
+    <td><%= product.name %></td>
+    <td><%= product.price %></td>
+    <td>
+        <% product.images.each do |image| %>
+            <%= link_to image, target: '_blank' do %>
+                <%= image_tag image, class: 'product-img' %>
+            <% end %>
+        <% end %>
+    </td>
+    <td class="product_approve">
+        <% if product.is_first_product? && current_admin.is_admin?  %>
+            <%= link_to 'Approve', first_product_path(product),class: 'btn btn-primary'%>
+        <% else %>
+            <% if product.is_first_product? && !current_admin.is_admin? %>
+                Wait for Admin Approval
+            <% else %>
+                Approved
+            <% end %>
+        <% end %>
+    </td>
+    <td>
+        <div class="btn-group">
+            <%= link_to edit_product_path(product), remote: true,class: 'btn btn-primary' do %>
+            	<i class="icon_pencil"></i>
+            <% end %>
+            <%= link_to product_path(product), method: :delete, remote: true, class: 'btn btn-danger' do %>
+            	<i class="icon_close_alt2"></i>
+            <% end %>
+        </div>
+    </td>
+</tr>

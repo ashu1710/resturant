@@ -1,0 +1,170 @@
+<%= render 'layouts/admin_header' %>
+<%= render 'layouts/admin_side_bar' %>
+<section id="main-content">
+    <section class="wrapper">
+		<div class="row">
+			<div class="col-lg-12">
+				<h3 class="page-header"><i class="fa fa-user-md"></i> Profile</h3>
+				<ol class="breadcrumb">
+					<li><i class="fa fa-home"></i><%= link_to "Home", root_path %></li>
+					<li><i class="fa fa-user-md"></i>Profile</li>
+				</ol>
+			</div>
+		</div>
+      	<div class="row">
+        <!-- profile-widget -->
+	        <div class="col-lg-12">
+	            <div class="profile-widget profile-widget-info">
+	                <div class="panel-body">
+	                    <div class="col-lg-2 col-sm-2">
+	                      <div class="follow-ava">
+	                      		<%= image_tag current_admin.avatar.attached? ? current_admin.avatar : "default_logo.jpg" %>
+	                      </div>
+	                    </div>
+	                    <div class="col-lg-4 col-sm-4 follow-info">
+							<p><i class="fa fa-twitter"><%= current_admin.email %></i></p>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+      	</div>
+	    <div class="row">
+	         <div class="col-lg-12">
+	            <section class="panel">
+	                  <header class="panel-heading tab-bg-info">
+	                      <ul class="nav nav-tabs">
+	                          <li class="active">
+	                              <a data-toggle="tab" class="tab-profile" href="#recent-activity">
+	                                  <i class="icon-home"></i>
+	                                  Profile
+	                              </a>
+	                          </li>
+	                          <li>
+	                              <a data-toggle="tab" class="tab-profile" href="#profile">
+	                                  <i class="icon-user"></i>
+	                                  Edit Profile
+	                              </a>
+	                          </li>
+	                          <li class="">
+	                              <a data-toggle="tab" class="tab-profile" href="#edit-profile">
+	                                  <i class="icon-envelope"></i>
+	                                  Change Password
+	                              </a>
+	                          </li>
+	                      </ul>
+	                  </header>
+	                <div class="panel-body">
+	                    <div class="tab-content">
+                          	<div id="recent-activity" class="tab-pane active">
+                               	<section class="panel">
+									<div class="panel-body bio-graph-info">
+										<h1>Bio Graph</h1>
+										<div class="row">
+									  		<div class="bio-row">
+									      		<p><span>Email Id </span>: <%= current_admin.email %> </p>
+									  		</div>
+									  		<div class="bio-row">
+									      		<p><span>Mobile Number</span>: <%= current_admin.mobile %></p>
+									  		</div>
+									  		<div class="bio-row">
+									      		<p><span>Address</span>: <%= current_admin.address %></p>
+									  		</div>
+									  		<div class="bio-row">
+									      		<p><span>City Name</span>: <%= current_admin.try(:city).try(:name) %></p>
+									  		</div>
+									  		<div class="bio-row">
+									      		<p><span>Area Name</span>: <%= current_admin.try(:area).try(:name) %></p>
+									  		</div>
+										</div>
+									</div>
+								</section>
+                          	</div>
+	                          <!-- profile -->
+	                        <div id="profile" class="tab-pane">
+                           	  	<section class="panel">                                          
+	                          		<div class="panel-body bio-graph-info">
+	                              		<h1> Update Profile</h1>
+    									<%= form_for current_admin, url: admins_dashboard_update_profile_path,html: { class: 'form-validate form-horizontal' }, method: 'patch' do |f| %>
+
+		                                  	<div class="form-group">
+		                                    	<label class="col-lg-2 control-label">Profile Pic</label>
+		                                    	<div class="col-lg-6">
+		                                      		<%= f.file_field :avatar, class: 'form-control' %>
+		                                      	</div>
+		                                  	</div>
+		                                  	<div class="form-group">
+		                                    	<label class="col-lg-2 control-label">Mobile</label>
+		                                      	<div class="col-lg-6">
+		                                      		<%= f.text_field :mobile, class: 'form-control' %>
+		                                      	</div>
+		                                  	</div>
+
+		                                  	<div class="form-group">
+		                                    	<label class="col-lg-2 control-label">Address</label>
+		                                      	<div class="col-lg-6">
+		                                      		<%= f.text_area :address, class: 'form-control' %>
+		                                      	</div>
+		                                  	</div>
+
+		                                  	
+		                                  	<div class="form-group">
+		                                    	<label class="col-lg-2 control-label">City Name</label>
+		                                      	<div class="col-lg-6">
+		                                      		<%= f.select(:city_id, @cities, {}, { :class => 'form-control', style: 'height: 100%;' }) %>
+		                                      	</div>
+		                                  	</div>
+
+		                                  	<div class="form-group">
+		                                    	<label class="col-lg-2 control-label">Area Name</label>
+		                                      	<div class="col-lg-6">
+                    								<%= f.select(:area_id, (@area.present? ? @area : [["Select City first", ""]]), {}, { :class => 'form-control', style: 'height: 100%;' }) %>
+		                                      	</div>
+		                                  	</div>
+
+		                                  	<div class="form-group">
+		                                      	<div class="col-lg-offset-2 col-lg-10">
+		                                        	<button type="submit" class="btn btn-primary">Save</button>
+		                                         	<button type="button" class="btn btn-danger">Cancel</button>
+		                                      	</div>
+		                                  	</div>
+										<% end %>		                               
+	                          		</div>
+	                     		</section>
+	                        </div>
+	                          <!-- edit-profile -->
+	                        <div id="edit-profile" class="tab-pane">
+	                           	<section class="panel">                                          
+		                          	<div class="panel-body bio-graph-info">
+		                              	<h1> Change Password</h1>
+        								<%= form_for current_admin, url: admins_dashboard_change_password_path,html: { class: 'form-validate form-horizontal changePassword' }, method: 'patch' do |f| %>
+
+		                                  	<div class="form-group">
+		                                      	<label class="col-lg-2 control-label">New Password</label>
+		                                      	<div class="col-lg-6">
+		                                      		<%= f.password_field :password, class: 'form-control' %>
+		                                      	</div>
+			                                 </div>
+			                                <div class="form-group">
+		                                      	<label class="col-lg-2 control-label">Re-enter Password</label>
+		                                    	<div class="col-lg-6">
+		                                      		<%= f.password_field :new_password, class: 'form-control' %>
+		                                    	</div>
+		                                 	</div>
+		                                  	<div class="form-group">
+		                                      	<div class="col-lg-offset-2 col-lg-10">
+		                                          <button type="submit" class="btn btn-primary">Save</button>
+		                                          <button type="button" class="btn btn-danger">Cancel</button>
+		                                      </div>
+		                                  	</div>
+										<% end %>		                               
+		                          	</div>
+		                      	</section>
+	                        </div>
+	                      </div>
+	                  </div>
+	              </section>
+	         </div>
+	    </div>
+    </section>
+</section>
+ 

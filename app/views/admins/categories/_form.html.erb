@@ -1,0 +1,45 @@
+<div class="panel-body">
+    <div class="form">
+        <% if params["action"] == "edit" %>
+            <% method_name = "patch".to_sym %>
+            <% redirect_url = admins_category_path %>
+        <% else %>
+            <% method_name = "post".to_sym %>
+            <% redirect_url = admins_categories_path %>
+        <% end %>
+        <%= form_for category,url: redirect_url,method: method_name,remote: :true,html: { class: 'form-validate form-horizontal' } do |f| %>
+            <%= f.hidden_field :id %>
+            <div class="form-group">
+                <label for="cname" class="control-label col-lg-2">Name<span class="required">*</span></label>
+                <div class="col-lg-10">
+                    <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control" %>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="cname" class="control-label col-lg-2">Category Type</label>
+                <div class="col-lg-10">
+                    <%= f.radio_button :category_type, 'booking', :checked => true %> 
+                    <%= label :booking, 'Booking' %>
+                    <%= f.radio_button :category_type, 'buying' %>
+                    <%= label :buy, 'Buy' %>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="cname" class="control-label col-lg-2">Category Image</label>
+                <div class="col-lg-10">
+                    <%= f.file_field :category_image, class: "form-control" %>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-lg-offset-2 col-lg-10">
+                    <%= f.submit (f.object.new_record? ? "Save" : "Update"), class: 'btn btn-primary btn-category' %>
+                    <button class="btn btn-default btn-cancel-new-form" type="button">Cancel</button>
+                </div>
+            </div>
+        <% end %>
+    </div>
+</div>

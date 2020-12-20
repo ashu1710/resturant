@@ -1,0 +1,8 @@
+$('.new_city_btn').addClass("hide");
+$(".new_city_btn").after("<%= j render(partial: 'form', locals: {city: @city}) %>");
+validatecityForm();
+$(".btn-cancel-new-form").on('click', function(e){
+	$('.new_city_btn').removeClass("hide");
+	$('.panel-body').remove();
+});
+onAjaxScroll();

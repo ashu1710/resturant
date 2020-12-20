@@ -1,0 +1,23 @@
+<% if @areas.present? %>
+	$('.area_filter option').remove();
+	if(!$('.area_filter').val()){
+		$('.area_filter').append("<option value=''>All</option");
+	}
+	<% @areas.each do |area| %>
+		<% if area.id.to_s == params['area_id'] %>
+			$('.area_filter').append("<option value='<%= area.id %>' selected ><%= area.name %></option");
+		<% else %>
+			$('.area_filter').append("<option value='<%= area.id %>'><%= area.name %></option");
+		<% end %>
+	<% end %>
+<% else %>
+	$('.area_filter').empty().append("<option value=''>Select City first</option>");
+<% end %>
+$('.no-slider.row').empty().append("<%= j(render 'product_filter_view') %>")
+loadImage();
+scriptJs();
+formValidate();
+displayTimeDate();
+menuDisplay();
+loadSlickLoader();
+profileView();

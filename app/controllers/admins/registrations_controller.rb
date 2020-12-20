@@ -1,0 +1,73 @@
+# frozen_string_literal: true
+
+class Admins::RegistrationsController < Devise::RegistrationsController
+  layout "admin"
+  before_action :configure_sign_up_params, only: [:create]
+  # before_action :configure_account_update_params, only: [:update]
+
+  # GET /resource/sign_up
+  def new
+
+    @cities = City.pluck(:name, :id)
+    @cities = @cities.unshift(["Select City", ""])
+    @areas = Area.pluck(:name, :id)
+    @areas = @areas.unshift(["Select City first", ""])
+    super
+  end
+
+  # POST /resource
+  # def create
+  #   super    
+  # end
+
+  # GET /resource/edit
+  # def edit
+  #   super
+  # end
+
+  # PUT /resource
+  # def update
+  #   super
+  # end
+
+  # DELETE /resource
+  # def destroy
+  #   super
+  # end
+
+  # GET /resource/cancel
+  # Forces the session data which is usually expired after sign
+  # in to be expired now. This is useful if the user wants to
+  # cancel oauth signing in/up in the middle of the process,
+  # removing all OAuth session data.
+  # def cancel
+  #   super
+  # end
+
+  # protected
+
+  def admin_params
+    params[:admin][:seq_no] = Admin.count + 1
+    params.require(:admin).permit(:email, :mobile, :address, :city_id, :area_id,:password, :seq_no)
+  end
+
+  # If you have extra params to permit, append them to the sanitizer.
+  def configure_sign_up_params
+    devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:email, :password, :password_confirmation, :city_id, :area_id, :address, :mobile, :seq_no) }
+  end
+
+  # If you have extra params to permit, append them to the sanitizer.
+  # def configure_account_update_params
+  #   devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
+  # end
+
+  # The path used after sign up.
+  # def after_sign_up_path_for(resource)
+  #   super(resource)
+  # end
+
+  # The path used after sign up for inactive accounts.
+  # def after_inactive_sign_up_path_for(resource)
+  #   super(resource)
+  # end
+end

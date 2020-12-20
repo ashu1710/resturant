@@ -1,0 +1,62 @@
+<%= render 'layouts/user_header' %>
+
+<!-- breadcrumb start -->
+<div class="breadcrumb-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="page-title">
+                    <h2>create account</h2></div>
+            </div>
+            <div class="col-sm-6">
+                <nav aria-label="breadcrumb" class="theme-breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">Home</li>
+                        <li class="breadcrumb-item active" aria-current="page">create account</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- breadcrumb End -->
+
+
+<!--section start-->
+<section class="register-page section-b-space">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h3>create account</h3>
+                <div class="theme-card">
+                    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: 'theme-form'}) do |f| %>
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <label for="email">Email</label>
+                                <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control required' %>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="review">Mobile</label>
+                                <%= f.text_field :mobile, autofocus: true, autocomplete: "mobile", class: 'form-control required' %>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <label for="email">Password</label>
+                                <%= f.password_field :password, autocomplete: "new-password", class: 'form-control' %>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="review">Re-password</label>
+                                <%= f.password_field :password_confirmation, autocomplete: "new-password",class: 'form-control' %>
+                            </div>
+                            <%= f.submit "Sign up", class: "btn btn-solid" %>
+                        </div>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--Section ends-->
+<%= render 'layouts/user_footer' %>
+

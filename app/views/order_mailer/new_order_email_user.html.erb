@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p>Your order received Successfully!</p>
+    <p>Thank you for your order</p>
+    <p>
+    Product Details:<br>
+    ----------
+    </p>
+    <table>
+      <thead>
+        <tr>
+          <th>Product name</th>
+          <th>Product Price</th>
+        </tr>
+        <tr>
+          <td><%= @order.product.name %></td>
+          <td><%= @order.product.price %></td>
+        </tr>
+      </thead>
+    </table>
+  </body>
+</html>

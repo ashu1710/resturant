@@ -1,0 +1,11 @@
+$('.new_product_btn').addClass("hide");
+$(".new_product_btn").after("<%= j render(partial: 'form', locals: {product: @product}) %>");
+setSubCategory();
+removeAttachment();
+formEditProductForm();
+productImagesCheck();
+$(".btn-cancel-new-form").on('click', function(e){
+	$('.new_product_btn').removeClass("hide");
+	$('.panel-body').remove();
+});
+onAjaxScroll();

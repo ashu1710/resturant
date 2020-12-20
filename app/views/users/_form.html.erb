@@ -1,0 +1,33 @@
+<div class="panel-body">
+    <div class="form">
+        <%= form_for users_path,html: { class: 'form-validate form-horizontal' } do |f| %>
+            <div class="form-group">
+                <label for="cname" class="control-label col-lg-2">Email<span class="required">*</span></label>
+                <div class="col-lg-10">
+                    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "Email" %>
+                </div>
+            </div>
+
+            <div class="form-group ">
+                <label for="cname" class="control-label col-lg-2">Mobile Number<span class="required">*</span></label>
+                <div class="col-lg-10">
+                    <%= f.number_field :mobile, class: "form-control", placeholder: "Mobile Number" %>
+                </div>
+            </div>
+
+
+            <div class="form-group ">
+                <label for="cname" class="control-label col-lg-2">password<span class="required">*</span></label>
+                <div class="col-lg-10">
+                    <%= f.password_field :password, class: "form-control", placeholder: "Password" %>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-offset-2 col-lg-10">
+                    <%= f.submit "Save", class: 'btn btn-primary' %>
+                    <button class="btn btn-default btn-cancel-new-form" type="button">Cancel</button>
+                </div>
+            </div>
+        <% end %>
+    </div>
+</div>

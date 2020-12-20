@@ -1,0 +1,61 @@
+<%= render 'layouts/user_header' %>
+<!-- thank-you section start -->
+<section class="section-b-space light-layout">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="success-text"><i class="fa fa-check-circle" aria-hidden="true"></i>
+                    <h2>thank you</h2>
+                    <p>Your order received and our vendor contact you as soon as possible.</p>
+                    <p>Transaction ID: <%= @booking.id %></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Section ends -->
+
+
+<!-- order-detail section start -->
+<section class="section-b-space">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="product-order">
+                    <h3>your order details</h3>
+                    <div class="row product-order-detail">
+                        <div class="col-3">
+                            <%= image_tag @booking.product.images.first, class: "img-fluid blur-up lazyload"  %>
+                            <img src="#" alt="" class="img-fluid blur-up lazyload"></div>
+                        <div class="col-3 order_detail">
+                            <div>
+                                <h4>product name</h4>
+                                <h5><%= @booking.product.name %></h5></div>
+                        </div>
+                        <div class="col-3 order_detail">
+                        </div>
+                        <div class="col-3 order_detail">
+                            <div>
+                                <h4>price</h4>
+                                <h5><%= "Rs. #{@booking.product.price}" %></h5></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="row order-success-sec">
+                    <div class="col-sm-12 payment-mode">
+                        <h4>payment method</h4>
+                        <p>Cash on delivery (COD)</p>
+                        <br><br>
+                        <h4>Order Status</h4>
+                        <p><%= @booking.is_confirmed.present? ? 'Confirmed' : 'Pending' %></p>
+                    </div>
+                    <div class="col-md-12"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Section ends -->
+<%= render 'layouts/user_footer' %>

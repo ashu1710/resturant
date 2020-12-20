@@ -1,0 +1,85 @@
+<%= render 'layouts/user_header' %>
+
+<!-- breadcrumb start -->
+<div class="breadcrumb-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="page-title">
+                    <h2>Product Filter</h2></div>
+            </div>
+            <div class="col-sm-6">
+                <nav aria-label="breadcrumb" class="theme-breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">Home</li>
+                        <li class="breadcrumb-item">Sub-Category</li>
+                        <li class="breadcrumb-item active" aria-current="page">Product</li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="col-md-4 col-sm-4 select_input">
+                <%= hidden_field_tag :category_id, params[:id] %>
+                <%= select_tag 'city_id', options_for_select(@city), { include_blank: "Select City Name", :class => 'form-control city_filter', size: '1' } %>
+            </div>
+            <div class="col-md-4 col-sm-4 select_input">
+                <%= select_tag 'area_id', options_for_select([]), { include_blank: "Select City First" ,:class => 'form-control area_filter', size: '1' } %>
+            </div>
+            <div class="col-md-4 col-sm-4 select_input">
+                <%= select_tag 'sort_by_price', options_for_select([["Low to High", "lth"], ['High to Low', "htl"]]), { include_blank: "Sort - Price" ,:class => 'form-control price_sort', size: '1' } %>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="authentication-page">
+    <div class="container">
+        <section class="search-block">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 offset-lg-3">
+                        <form class="form-header">
+                            <div class="input-group">
+                                <input type="text" class="form-control search_box" aria-label="Amount (to the nearest dollar)" placeholder="Search Products......">
+                                <div class="input-group-append">
+                                    <%= link_to 'javascript:void(0)', remote: true,class: 'btn btn-solid btn_search' do %>
+                                        <i class="fa fa-search"></i>Search
+                                    <% end %>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</section>
+
+<section class="section-b-space ratio_asos">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="no-slider row">
+                    <% @products.each do |product| %>
+                        <div class="product-box">
+                            <div class="img-wrapper">
+                                <div class="front">
+                                    <%= link_to product_details_path(product) do %>
+                                        <%= image_tag product.images.first, class: 'img-fluid blur-up lazyload bg-img' %>
+                                    <% end %>
+                                </div>
+                            </div>
+                            <div class="product-detail">
+                                <div class="rating"></div>
+                                <h6><%= product.name %></h6>
+                                <h4><%= 'Rs. ' + product.price.to_s %></h4>
+                                <ul class="color-variant">
+                                </ul>
+                            </div>
+                        </div>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<%= render 'layouts/user_footer' %>

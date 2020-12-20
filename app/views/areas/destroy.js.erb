@@ -1,0 +1,7 @@
+<% if @isdeleted %>
+	$(".tr_<%= @area.id %>").remove();
+	toastr.success('Record Deleted Successfully');
+<% else %>
+	toastr.error('Record not deleted...');
+<% end %>
+onAjaxScroll();

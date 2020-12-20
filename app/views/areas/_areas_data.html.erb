@@ -1,0 +1,14 @@
+<tr class="tr_<%= area.id %>">
+    <td><%= area.try(:city).try(:name) %></td>
+    <td><%= area.name %></td>
+    <td>
+        <div class="btn-group">
+            <%= link_to edit_area_path(area), remote: true,class: 'btn btn-primary' do %>
+            	<i class="icon_pencil"></i>
+            <% end %>
+            <%= link_to area_path(area), method: :delete, remote: true, class: 'btn btn-danger' do %>
+            	<i class="icon_close_alt2"></i>
+            <% end %>
+        </div>
+    </td>
+</tr>

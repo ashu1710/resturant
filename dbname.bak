@@ -1,0 +1,2172 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 10.12 (Ubuntu 10.12-0ubuntu0.18.04.1)
+-- Dumped by pg_dump version 10.12 (Ubuntu 10.12-0ubuntu0.18.04.1)
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: active_storage_attachments; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.active_storage_attachments (
+    id bigint NOT NULL,
+    name character varying NOT NULL,
+    record_type character varying NOT NULL,
+    record_id bigint NOT NULL,
+    blob_id bigint NOT NULL,
+    created_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.active_storage_attachments OWNER TO postgres;
+
+--
+-- Name: active_storage_attachments_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.active_storage_attachments_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.active_storage_attachments_id_seq OWNER TO postgres;
+
+--
+-- Name: active_storage_attachments_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.active_storage_attachments_id_seq OWNED BY public.active_storage_attachments.id;
+
+
+--
+-- Name: active_storage_blobs; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.active_storage_blobs (
+    id bigint NOT NULL,
+    key character varying NOT NULL,
+    filename character varying NOT NULL,
+    content_type character varying,
+    metadata text,
+    byte_size bigint NOT NULL,
+    checksum character varying NOT NULL,
+    created_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.active_storage_blobs OWNER TO postgres;
+
+--
+-- Name: active_storage_blobs_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.active_storage_blobs_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.active_storage_blobs_id_seq OWNER TO postgres;
+
+--
+-- Name: active_storage_blobs_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.active_storage_blobs_id_seq OWNED BY public.active_storage_blobs.id;
+
+
+--
+-- Name: addresses; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.addresses (
+    id bigint NOT NULL,
+    street_1 text,
+    user_id bigint,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    city_name character varying,
+    area_name character varying
+);
+
+
+ALTER TABLE public.addresses OWNER TO postgres;
+
+--
+-- Name: addresses_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.addresses_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.addresses_id_seq OWNER TO postgres;
+
+--
+-- Name: addresses_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.addresses_id_seq OWNED BY public.addresses.id;
+
+
+--
+-- Name: admins; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.admins (
+    id bigint NOT NULL,
+    email character varying DEFAULT ''::character varying NOT NULL,
+    encrypted_password character varying DEFAULT ''::character varying NOT NULL,
+    reset_password_token character varying,
+    reset_password_sent_at timestamp without time zone,
+    remember_created_at timestamp without time zone,
+    mobile character varying,
+    is_admin boolean DEFAULT false,
+    city_id bigint,
+    area_id bigint,
+    address text,
+    seq_no character varying
+);
+
+
+ALTER TABLE public.admins OWNER TO postgres;
+
+--
+-- Name: admins_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.admins_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.admins_id_seq OWNER TO postgres;
+
+--
+-- Name: admins_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.admins_id_seq OWNED BY public.admins.id;
+
+
+--
+-- Name: ar_internal_metadata; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.ar_internal_metadata (
+    key character varying NOT NULL,
+    value character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.ar_internal_metadata OWNER TO postgres;
+
+--
+-- Name: areas; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.areas (
+    id bigint NOT NULL,
+    name character varying,
+    city_id bigint,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.areas OWNER TO postgres;
+
+--
+-- Name: areas_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.areas_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.areas_id_seq OWNER TO postgres;
+
+--
+-- Name: areas_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.areas_id_seq OWNED BY public.areas.id;
+
+
+--
+-- Name: auth_tokens; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.auth_tokens (
+    id bigint NOT NULL,
+    token character varying,
+    user_type character varying,
+    user_id bigint,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.auth_tokens OWNER TO postgres;
+
+--
+-- Name: auth_tokens_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.auth_tokens_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.auth_tokens_id_seq OWNER TO postgres;
+
+--
+-- Name: auth_tokens_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.auth_tokens_id_seq OWNED BY public.auth_tokens.id;
+
+
+--
+-- Name: banners; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.banners (
+    id bigint NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.banners OWNER TO postgres;
+
+--
+-- Name: banners_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.banners_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.banners_id_seq OWNER TO postgres;
+
+--
+-- Name: banners_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.banners_id_seq OWNED BY public.banners.id;
+
+
+--
+-- Name: bookings; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.bookings (
+    id bigint NOT NULL,
+    booking_date date,
+    time_from time without time zone,
+    time_to time without time zone,
+    product_id bigint,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    is_done boolean DEFAULT false,
+    is_confirmed boolean,
+    user_id bigint
+);
+
+
+ALTER TABLE public.bookings OWNER TO postgres;
+
+--
+-- Name: bookings_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.bookings_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.bookings_id_seq OWNER TO postgres;
+
+--
+-- Name: bookings_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.bookings_id_seq OWNED BY public.bookings.id;
+
+
+--
+-- Name: carts; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.carts (
+    id bigint NOT NULL,
+    qty integer,
+    user_id bigint,
+    product_id bigint,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    color_id bigint,
+    size_id bigint
+);
+
+
+ALTER TABLE public.carts OWNER TO postgres;
+
+--
+-- Name: carts_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.carts_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.carts_id_seq OWNER TO postgres;
+
+--
+-- Name: carts_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.carts_id_seq OWNED BY public.carts.id;
+
+
+--
+-- Name: categories; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.categories (
+    id bigint NOT NULL,
+    name character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    category_type character varying
+);
+
+
+ALTER TABLE public.categories OWNER TO postgres;
+
+--
+-- Name: categories_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.categories_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.categories_id_seq OWNER TO postgres;
+
+--
+-- Name: categories_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.categories_id_seq OWNED BY public.categories.id;
+
+
+--
+-- Name: cities; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.cities (
+    id bigint NOT NULL,
+    name character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.cities OWNER TO postgres;
+
+--
+-- Name: cities_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.cities_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.cities_id_seq OWNER TO postgres;
+
+--
+-- Name: cities_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.cities_id_seq OWNED BY public.cities.id;
+
+
+--
+-- Name: colors; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.colors (
+    id bigint NOT NULL,
+    color_code character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.colors OWNER TO postgres;
+
+--
+-- Name: colors_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.colors_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.colors_id_seq OWNER TO postgres;
+
+--
+-- Name: colors_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.colors_id_seq OWNED BY public.colors.id;
+
+
+--
+-- Name: colors_products; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.colors_products (
+    product_id integer,
+    color_id integer
+);
+
+
+ALTER TABLE public.colors_products OWNER TO postgres;
+
+--
+-- Name: feedbacks; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.feedbacks (
+    id bigint NOT NULL,
+    msg character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    is_confirmed boolean DEFAULT false,
+    first_name character varying,
+    last_name character varying,
+    mobile character varying,
+    email character varying
+);
+
+
+ALTER TABLE public.feedbacks OWNER TO postgres;
+
+--
+-- Name: feedbacks_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.feedbacks_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.feedbacks_id_seq OWNER TO postgres;
+
+--
+-- Name: feedbacks_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.feedbacks_id_seq OWNED BY public.feedbacks.id;
+
+
+--
+-- Name: notifications; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.notifications (
+    id bigint NOT NULL,
+    msg character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.notifications OWNER TO postgres;
+
+--
+-- Name: notifications_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.notifications_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.notifications_id_seq OWNER TO postgres;
+
+--
+-- Name: notifications_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.notifications_id_seq OWNED BY public.notifications.id;
+
+
+--
+-- Name: orders; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.orders (
+    id bigint NOT NULL,
+    order_date date,
+    order_receive_date date,
+    product_id bigint,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    is_confirmed boolean,
+    user_id bigint,
+    address_id bigint
+);
+
+
+ALTER TABLE public.orders OWNER TO postgres;
+
+--
+-- Name: orders_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.orders_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.orders_id_seq OWNER TO postgres;
+
+--
+-- Name: orders_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.orders_id_seq OWNED BY public.orders.id;
+
+
+--
+-- Name: orders_products; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.orders_products (
+    product_id integer,
+    order_id integer
+);
+
+
+ALTER TABLE public.orders_products OWNER TO postgres;
+
+--
+-- Name: products; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.products (
+    id bigint NOT NULL,
+    name character varying,
+    price integer,
+    category_id bigint,
+    sub_category_id bigint,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    description text,
+    admin_id bigint,
+    is_first_product boolean DEFAULT false
+);
+
+
+ALTER TABLE public.products OWNER TO postgres;
+
+--
+-- Name: products_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.products_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.products_id_seq OWNER TO postgres;
+
+--
+-- Name: products_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.products_id_seq OWNED BY public.products.id;
+
+
+--
+-- Name: products_orders_sizes_colors; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.products_orders_sizes_colors (
+    id bigint NOT NULL,
+    product_id bigint,
+    order_id bigint,
+    size_id bigint,
+    color_id bigint,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    qty integer DEFAULT 1,
+    user_id bigint
+);
+
+
+ALTER TABLE public.products_orders_sizes_colors OWNER TO postgres;
+
+--
+-- Name: products_orders_sizes_colors_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.products_orders_sizes_colors_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.products_orders_sizes_colors_id_seq OWNER TO postgres;
+
+--
+-- Name: products_orders_sizes_colors_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.products_orders_sizes_colors_id_seq OWNED BY public.products_orders_sizes_colors.id;
+
+
+--
+-- Name: products_sizes; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.products_sizes (
+    product_id integer,
+    size_id integer
+);
+
+
+ALTER TABLE public.products_sizes OWNER TO postgres;
+
+--
+-- Name: schema_migrations; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.schema_migrations (
+    version character varying NOT NULL
+);
+
+
+ALTER TABLE public.schema_migrations OWNER TO postgres;
+
+--
+-- Name: sizes; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.sizes (
+    id bigint NOT NULL,
+    size_no character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.sizes OWNER TO postgres;
+
+--
+-- Name: sizes_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.sizes_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.sizes_id_seq OWNER TO postgres;
+
+--
+-- Name: sizes_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.sizes_id_seq OWNED BY public.sizes.id;
+
+
+--
+-- Name: sub_categories; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.sub_categories (
+    id bigint NOT NULL,
+    name character varying,
+    category_id bigint,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.sub_categories OWNER TO postgres;
+
+--
+-- Name: sub_categories_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.sub_categories_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.sub_categories_id_seq OWNER TO postgres;
+
+--
+-- Name: sub_categories_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.sub_categories_id_seq OWNED BY public.sub_categories.id;
+
+
+--
+-- Name: users; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.users (
+    id bigint NOT NULL,
+    email character varying,
+    phone character varying,
+    user_type integer,
+    dob date,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    encrypted_password character varying DEFAULT ''::character varying NOT NULL,
+    reset_password_token character varying,
+    reset_password_sent_at timestamp without time zone,
+    remember_created_at timestamp without time zone,
+    mobile character varying
+);
+
+
+ALTER TABLE public.users OWNER TO postgres;
+
+--
+-- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.users_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.users_id_seq OWNER TO postgres;
+
+--
+-- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.users_id_seq OWNED BY public.users.id;
+
+
+--
+-- Name: active_storage_attachments id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.active_storage_attachments ALTER COLUMN id SET DEFAULT nextval('public.active_storage_attachments_id_seq'::regclass);
+
+
+--
+-- Name: active_storage_blobs id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.active_storage_blobs ALTER COLUMN id SET DEFAULT nextval('public.active_storage_blobs_id_seq'::regclass);
+
+
+--
+-- Name: addresses id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.addresses ALTER COLUMN id SET DEFAULT nextval('public.addresses_id_seq'::regclass);
+
+
+--
+-- Name: admins id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.admins ALTER COLUMN id SET DEFAULT nextval('public.admins_id_seq'::regclass);
+
+
+--
+-- Name: areas id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.areas ALTER COLUMN id SET DEFAULT nextval('public.areas_id_seq'::regclass);
+
+
+--
+-- Name: auth_tokens id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.auth_tokens ALTER COLUMN id SET DEFAULT nextval('public.auth_tokens_id_seq'::regclass);
+
+
+--
+-- Name: banners id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.banners ALTER COLUMN id SET DEFAULT nextval('public.banners_id_seq'::regclass);
+
+
+--
+-- Name: bookings id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.bookings ALTER COLUMN id SET DEFAULT nextval('public.bookings_id_seq'::regclass);
+
+
+--
+-- Name: carts id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.carts ALTER COLUMN id SET DEFAULT nextval('public.carts_id_seq'::regclass);
+
+
+--
+-- Name: categories id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.categories ALTER COLUMN id SET DEFAULT nextval('public.categories_id_seq'::regclass);
+
+
+--
+-- Name: cities id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.cities ALTER COLUMN id SET DEFAULT nextval('public.cities_id_seq'::regclass);
+
+
+--
+-- Name: colors id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.colors ALTER COLUMN id SET DEFAULT nextval('public.colors_id_seq'::regclass);
+
+
+--
+-- Name: feedbacks id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.feedbacks ALTER COLUMN id SET DEFAULT nextval('public.feedbacks_id_seq'::regclass);
+
+
+--
+-- Name: notifications id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.notifications ALTER COLUMN id SET DEFAULT nextval('public.notifications_id_seq'::regclass);
+
+
+--
+-- Name: orders id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.orders ALTER COLUMN id SET DEFAULT nextval('public.orders_id_seq'::regclass);
+
+
+--
+-- Name: products id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.products ALTER COLUMN id SET DEFAULT nextval('public.products_id_seq'::regclass);
+
+
+--
+-- Name: products_orders_sizes_colors id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.products_orders_sizes_colors ALTER COLUMN id SET DEFAULT nextval('public.products_orders_sizes_colors_id_seq'::regclass);
+
+
+--
+-- Name: sizes id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.sizes ALTER COLUMN id SET DEFAULT nextval('public.sizes_id_seq'::regclass);
+
+
+--
+-- Name: sub_categories id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.sub_categories ALTER COLUMN id SET DEFAULT nextval('public.sub_categories_id_seq'::regclass);
+
+
+--
+-- Name: users id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_id_seq'::regclass);
+
+
+--
+-- Data for Name: active_storage_attachments; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.active_storage_attachments (id, name, record_type, record_id, blob_id, created_at) FROM stdin;
+1	category_image	Category	1	1	2020-02-20 16:01:43.352966
+2	category_image	Category	2	2	2020-02-20 16:02:13.796864
+3	category_image	Category	3	3	2020-02-20 16:02:34.167563
+4	sub_category_image	SubCategory	1	4	2020-02-20 16:02:59.288586
+5	sub_category_image	SubCategory	2	5	2020-02-20 16:04:17.837288
+8	images	Product	3	8	2020-02-20 16:08:49.614722
+11	images	Product	5	11	2020-02-20 16:10:07.751234
+13	banner_image	Banner	2	13	2020-03-14 09:36:38.803829
+14	banner_image	Banner	3	14	2020-03-14 09:37:03.104096
+18	images	Product	7	18	2020-04-05 12:43:52.969208
+19	images	Product	6	19	2020-04-05 12:45:01.772092
+20	images	Product	13	25	2020-05-02 15:30:07.802266
+21	images	Product	13	26	2020-05-02 15:30:07.803748
+22	images	Product	14	27	2020-05-02 15:32:08.777026
+23	images	Product	14	28	2020-05-02 15:32:08.778281
+24	images	Product	15	29	2020-05-02 15:32:25.200283
+25	images	Product	15	30	2020-05-02 15:32:25.201748
+26	images	Product	16	31	2020-05-02 15:32:41.255177
+27	images	Product	16	32	2020-05-02 15:32:41.256706
+28	images	Product	19	35	2020-05-03 08:30:57.493499
+30	images	Product	21	37	2020-05-10 04:44:19.526737
+32	images	Product	22	39	2020-05-16 11:42:39.329158
+33	images	Product	23	40	2020-05-16 11:49:41.87755
+\.
+
+
+--
+-- Data for Name: active_storage_blobs; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.active_storage_blobs (id, key, filename, content_type, metadata, byte_size, checksum, created_at) FROM stdin;
+1	g1Ynw2dKDYYKcNJG5EMVNzpM	p1.jpeg	image/jpeg	{"identified":true,"analyzed":true}	22230	u98toAhlU1Q5AYMzn2ub6Q==	2020-02-20 16:01:43.343473
+2	8KmpEAHYa7TkZtfNiD9ckQhg	b1.jpg	image/jpeg	{"identified":true,"analyzed":true}	132679	lnrLmfR7OL896Z0LSP5SPw==	2020-02-20 16:02:13.791493
+3	8BhhFHLPNPPyjc8CK5MJqfB2	online.jpeg	image/jpeg	{"identified":true,"analyzed":true}	12756	pOsiHMZRLK3RJvDEypi3/A==	2020-02-20 16:02:34.161158
+4	3FjGda4ffZAyoxqB2ZopectV	ms1.jpeg	image/jpeg	{"identified":true,"analyzed":true}	7901	E4Mik5MHBwoEDetCZXnw5Q==	2020-02-20 16:02:59.28308
+5	znvT4pvUJPG4Yi85uNUaSj6N	wo.jpeg	image/jpeg	{"identified":true,"analyzed":true}	12103	T6Rw2ECYVnvDVA6uVb+l3A==	2020-02-20 16:04:17.830574
+26	3PchxBtSqy2VeHruWpoYj9La	20200319_104507.jpg	image/jpeg	{"identified":true,"analyzed":true}	4339021	P97Og5zkSe2UXl60AQEJpw==	2020-05-02 15:30:07.790747
+8	CxMVWiyvzhzF3FfXtK5b8kG3	mc1.jpg	image/jpeg	{"identified":true,"analyzed":true}	69157	/M0oKNC15ze1/+nHP1m9Nw==	2020-02-20 16:08:49.604933
+11	Z9ziSAdC4oiR5vj7Z7hF8Fue	wc1.jpeg	image/jpeg	{"identified":true,"analyzed":true}	6175	Phru/HfaE7Ej+Rd2Bw92DQ==	2020-02-20 16:10:07.745624
+13	X9EsM2ULaq4QRycsiunKyi6s	2.jpg	image/jpeg	{"identified":true,"analyzed":true}	483722	ark71kaZ4ZecWUoQRop/IQ==	2020-03-14 09:36:38.800356
+14	NVQeXpM16VXxt4YsvtDN9WjS	12.jpg	image/jpeg	{"identified":true,"analyzed":true}	89077	e8eyHQ1gRRzPpF+Pc8XPNQ==	2020-03-14 09:37:03.10039
+27	E5wh1Yhcfse7uzy6NifgUoSa	Screenshot_20200311-181913.png	image/png	{"identified":true,"analyzed":true}	4060313	kL9VM7Mslw5TeQZSu8bslw==	2020-05-02 15:32:08.726783
+28	cBdaqzYo9U7s4saJPJMwEggq	Screenshot_20200311-181857.png	image/png	{"identified":true,"analyzed":true}	1075320	9QvNrHgIfZBq11VDHDukqw==	2020-05-02 15:32:08.765476
+18	CRTjrzWfifNcCU28XiwY4uSM	images.jpeg	image/jpeg	{"identified":true,"analyzed":true}	9540	GA47c33LZUOOCfmv0AUjLw==	2020-04-05 12:43:52.966579
+19	QiaALeZSjXQKFd3tYuUfEYEi	images.jpeg	image/jpeg	{"identified":true,"analyzed":true}	9540	GA47c33LZUOOCfmv0AUjLw==	2020-04-05 12:45:01.769086
+20	GaFqrWACN41pfsRfLwwxcQed	20200502_185339.jpg	image/jpeg	{"identified":true}	3114282	uWQr6E8VuWRCRPprrb4q7A==	2020-05-02 13:31:21.578578
+21	QtRb8KypW8eE72reZW6DjH8m	20200502_185339.jpg	image/jpeg	{"identified":true}	3114282	uWQr6E8VuWRCRPprrb4q7A==	2020-05-02 13:33:39.6995
+22	kNVD5MdHfy1vbkJ4drAUbV4P	20200502_185339.jpg	image/jpeg	{"identified":true}	3114282	uWQr6E8VuWRCRPprrb4q7A==	2020-05-02 13:36:25.86867
+23	3raMYFvi81DWJafNCkpvGhEo	20200502_185339.jpg	image/jpeg	{"identified":true}	3114282	uWQr6E8VuWRCRPprrb4q7A==	2020-05-02 13:38:00.585566
+24	UwNyeu4ZsStdveQUHVqvYnwU	20200502_185339.jpg	image/jpeg	{"identified":true}	3114282	uWQr6E8VuWRCRPprrb4q7A==	2020-05-02 15:28:18.823899
+25	7qpd1NzYEGDWJ5fLDFadsdGZ	20200502_185334_001.jpg	image/jpeg	{"identified":true,"analyzed":true}	3717436	ywy5h3bWkdIb7UWjYXUtPg==	2020-05-02 15:30:07.728734
+29	1Nc6tmNyYH9kJm13EmUQAAGe	Screenshot_20200311-181913.png	image/png	{"identified":true,"analyzed":true}	4060313	kL9VM7Mslw5TeQZSu8bslw==	2020-05-02 15:32:25.169379
+30	UAFuPwwcSd3XYJg1FjRgWJke	Screenshot_20200311-181857.png	image/png	{"identified":true,"analyzed":true}	1075320	9QvNrHgIfZBq11VDHDukqw==	2020-05-02 15:32:25.188023
+31	TWDGs4tkyo6USi1zgV4dv83U	Screenshot_20200311-181913.png	image/png	{"identified":true,"analyzed":true}	4060313	kL9VM7Mslw5TeQZSu8bslw==	2020-05-02 15:32:41.198996
+32	xFBBG96xr6sRJz7qGNrBzEC3	Screenshot_20200311-181857.png	image/png	{"identified":true,"analyzed":true}	1075320	9QvNrHgIfZBq11VDHDukqw==	2020-05-02 15:32:41.216431
+33	xMWCgSh1W2h3r9JQ8dRRVugd	20200502_185334_001.jpg	image/jpeg	{"identified":true}	3717436	ywy5h3bWkdIb7UWjYXUtPg==	2020-05-02 15:33:21.955486
+34	FAJtYQbLF8LjkX9wdmKhZ3H1	20200319_104507.jpg	image/jpeg	{"identified":true}	4339021	P97Og5zkSe2UXl60AQEJpw==	2020-05-02 15:46:06.912346
+35	Mrny3saFfruZK7xXUJyFq1bL	20200319_104507.jpg	image/jpeg	{"identified":true,"analyzed":true}	4339021	P97Og5zkSe2UXl60AQEJpw==	2020-05-03 08:30:57.465729
+37	2xGpzK8JR385mRNG2qZMZ1k8	Screenshot_20200422-154924.png	image/png	{"identified":true,"analyzed":true}	145794	Q4BA97DKXQmC6xVBNqEroA==	2020-05-10 04:44:19.51353
+39	mMvX4Ngy8xydC5m4PYahKLeZ	measure_20200317_150213.png	image/png	{"identified":true,"analyzed":true}	3110534	CjEqvWJdePiMd+vK83kW+A==	2020-05-16 11:42:39.303573
+40	doqWezon2Rn6sWGDcxxVQRaC	20200319_104507.jpg	image/jpeg	{"identified":true,"analyzed":true}	4339021	P97Og5zkSe2UXl60AQEJpw==	2020-05-16 11:49:41.858829
+\.
+
+
+--
+-- Data for Name: addresses; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.addresses (id, street_1, user_id, created_at, updated_at, city_name, area_name) FROM stdin;
+1	3 test 123	1	2020-02-21 03:52:28.410439	2020-02-21 03:52:28.410439	\N	\N
+2	hello 	1	2020-02-24 15:58:11.269126	2020-02-24 15:58:11.269126	\N	\N
+3	temp	1	2020-02-24 15:58:13.079945	2020-02-24 15:58:13.079945	\N	\N
+4	Asdxcvbb	2	2020-02-27 11:35:51.444082	2020-02-27 11:35:51.444082	\N	\N
+5	Demo app,nr.abc	1	2020-03-18 17:10:21.252725	2020-03-18 17:10:21.252725	\N	\N
+6		2	2020-04-09 05:15:47.717446	2020-04-09 05:15:47.717446	\N	\N
+7	Gshjdkdk	2	2020-04-10 04:42:53.657489	2020-04-10 04:42:53.657489	\N	\N
+8	gffhgf	1	2020-04-19 04:49:03.635881	2020-04-19 04:49:03.635881	\N	\N
+9	user full address	9	2020-04-19 05:46:59.56677	2020-04-19 05:46:59.56677	\N	\N
+10	user full address	9	2020-04-19 05:47:14.367049	2020-04-19 05:47:14.367049	\N	\N
+11	user full address	9	2020-04-19 05:47:42.870627	2020-04-19 05:47:42.870627	\N	\N
+12	nadiad	11	2020-04-19 10:16:05.955854	2020-04-19 10:16:05.955854	\N	\N
+13		12	2020-04-29 05:22:40.130703	2020-04-29 05:22:40.130703	\N	\N
+14	Test demo	1	2020-05-06 08:20:46.743233	2020-05-06 08:20:46.743233	test	test
+15	date	14	2020-05-09 13:01:59.986232	2020-05-09 13:01:59.986232	hvhvhvhvvh	hvhvuvuv
+16	satellite	14	2020-05-09 13:07:39.835661	2020-05-09 13:07:39.835661	Ahmedabad	shivranjani
+17	hello test	1	2020-05-10 11:51:22.576346	2020-05-10 11:51:22.576346	test	test
+18	ahmedabad	2	2020-05-10 13:02:22.967927	2020-05-10 13:02:22.967927	ahmedabad	nikol
+19	ahmedabad	2	2020-05-10 13:02:24.189874	2020-05-10 13:02:24.189874	ahmedabad	nikol
+20	jdgdifdifd	16	2020-05-16 11:20:35.319015	2020-05-16 11:20:35.319015	ufuufxufs	hdzhfuzf
+21	jfxifif	16	2020-05-16 11:20:51.258154	2020-05-16 11:20:51.258154	fusutsdut	uruutd
+\.
+
+
+--
+-- Data for Name: admins; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.admins (id, email, encrypted_password, reset_password_token, reset_password_sent_at, remember_created_at, mobile, is_admin, city_id, area_id, address, seq_no) FROM stdin;
+1	patelsandip970@gmail.com	$2a$11$Z/nR5YQtllkI7OGLIiwOq.7IWSEbF6T/SMRXWrcGf45LbTEP/nsuy	\N	\N	\N	\N	t	1	1	\N	\N
+2	sarthak2417@gmail.com	$2a$11$iLTAEtybV22AGiOeZsgVbeU.X.Edmnh6RxmobxhnwA8js57uo.UUy	\N	\N	\N	8460861031	f	1	1	12 vishwa bunglows 	\N
+3	hello@gmail.con	$2a$11$ACnv2Sizfi6c1LC0gJRFcu6pIAHie91Erj3FCo45lDyZCucCBM1Ma	\N	\N	\N	9632587410	f	1	1	123456	\N
+4	temp@gmail.com	$2a$11$vBAXknQJY9UG0tAf.b26CegVq8LzY8iR8KWfbPu.YnrYnXk2wIfv.	\N	\N	\N	8565859656	f	1	1	shivranjani	\N
+5	hello123456@gmail.com	$2a$11$SsghWVsWlwNchBvy6mDYSup6v/1viOUzrsQyDZO92TXg20Aeaoppq	\N	\N	\N	1234567890	f	1	1	\N	\N
+6	dabhidhvani07@gmail.com	$2a$11$BchUtLMqLgUjH8/GiBdkh.l9ek4GB3cd2qLmeNerYfJe.kEaDoDK2	\N	\N	\N	+918200603878	f	1	1	\N	\N
+7	dabhidhvani@gmail.com	$2a$11$B0bDJ.SUL9v4msv8BsUMAOAorWRQUreQbT.OmohWuK2oy5uZhhNye	\N	\N	\N	825528282258	f	1	1	\N	\N
+8	a@gmail.com	$2a$11$byxGifY1HB..h/F4sy1/T.INJI0sYuu6UXE8AAKmd3yl2hOT88MBm	\N	\N	\N	1234567890	f	1	1	\N	\N
+9	z@gmail.com	$2a$11$YHjb3asn8wOgZRHlOwSe/.Ez4zRHxKGPfbIYRt/i.tMujNkbiiwMC	\N	\N	\N	2536965869	f	1	1	\N	\N
+10	hello123@gmail.com	$2a$11$gMoS92l3aRRj6ArStcze5uqWQClI2loEK9VwTuhUkO8HmRialxONO	\N	\N	\N	1234567890	f	1	1	\N	\N
+11	hello1234@gmail.com	$2a$11$qRIIFx9A4PDWH7sAZQKHFODxACCjmALu4XqCQkJ0EaPwIMhTE2506	\N	\N	\N	1234567890	f	1	1	\N	\N
+12	e@gmail.com	$2a$11$ka4d4tSrHZQU8na0X130BuanmSv80tKDHCBrtr9J1fc.gOyGqj2di	\N	\N	\N	52368989	f	1	1	\N	\N
+13	test@gmail.com	$2a$11$QdJq1TKv6eHmDWHxkxqkMOARAUiHX9ijRFWmrsN2gmWBLZtQx/Vgi	\N	\N	\N	95656595995	f	1	1	\N	\N
+14	c@gmail.com	$2a$11$P.CJ1E3AqDSipk9sGkxAgO6mOJO0RfVlFROPJpVvojcdi.d1cdpDW	\N	\N	\N	86658658658	f	1	1	\N	\N
+16	f@gmail.com	$2a$11$Uo14BISaSDH6xhTMVkffM.QLwY.1WzdHmuAhA5YR20dzcL0XMurw.	\N	\N	\N	3636363636	f	1	1	\N	\N
+17	test45@gmail.com	$2a$11$ZmtS48NYeS4tAisa9fdqqOCkEeWRDcJTAzteVpDZp5AAOlBsVt57C	\N	\N	\N	356858686565	f	1	1	\N	1
+19	xc@gmail.com	$2a$11$9Clm5rNhvbOE2Ca7CL5MkOwk2UxFqh1vbADmPk8Uc9401/eNuz5FO	\N	\N	\N	3636363636	f	1	2	\N	2
+18	dhvani@gmail.com	$2a$11$p8yrSCnh4ojMC.z.mwB5QeNLKh5cX/srlcLZsC45vJO42jL3FMv2y	\N	\N	\N	2536968536	f	1	1	\N	3
+15	bhrugi@gmail.com	$2a$11$Kr0t7RleczsQZiVEn2H8WeRuxyKl0xDdPDHeOYOCODjOvYtUdGolO	\N	\N	\N	1234567890	f	1	1	\N	
+20	shakshi977@gmail.com	$2a$11$os9gErgmyYKTISFV92r9BuVgEjuUkD.ItsZLAotvBIvctCqXIEBNu	\N	\N	\N	8238942227	f	1	1	\N	\N
+21	demo123@gmail.com	$2a$11$uiNL6Np5onhQjheaHGJOy.mVFyCy9CgYLLSwFRakq5OjBrswhFBt6	\N	\N	\N	9999955555	f	1	1	\N	\N
+\.
+
+
+--
+-- Data for Name: ar_internal_metadata; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.ar_internal_metadata (key, value, created_at, updated_at) FROM stdin;
+environment	production	2020-02-19 18:51:10.667721	2020-02-23 10:02:20.871144
+\.
+
+
+--
+-- Data for Name: areas; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.areas (id, name, city_id, created_at, updated_at) FROM stdin;
+1	Nikol	1	2020-02-19 18:51:55.232617	2020-02-19 18:51:55.232617
+2	Bapunagar	1	2020-05-17 09:12:30.457399	2020-05-17 09:12:30.457399
+3	Narangpura	1	2020-05-17 09:12:43.377815	2020-05-17 09:12:43.377815
+4	Kapodara	2	2020-05-17 09:12:53.099223	2020-05-17 09:12:53.099223
+5	Laskana	2	2020-05-17 09:13:03.353281	2020-05-17 09:13:03.353281
+\.
+
+
+--
+-- Data for Name: auth_tokens; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.auth_tokens (id, token, user_type, user_id, created_at, updated_at) FROM stdin;
+1	c05682ba734ba572a66dfff2	User	1	2020-02-29 06:05:09.256495	2020-02-29 06:05:09.256495
+2	23175735204a01fcd5f4da4c	User	1	2020-02-29 07:49:30.769898	2020-02-29 07:49:30.769898
+3	2af3419dda6d088962caf3e4	Admin	5	2020-03-07 04:07:19.814566	2020-03-07 04:07:19.814566
+5	806ff8f831c3f0e70cd5752a	Admin	1	2020-03-07 06:34:48.67898	2020-03-07 06:34:48.67898
+6	1adf4003aae6a907a049e8c9	User	3	2020-03-07 09:21:13.796821	2020-03-07 09:21:13.796821
+7	cb0220c6a312f4c3f61be3e9	Admin	6	2020-03-07 10:51:51.06103	2020-03-07 10:51:51.06103
+8	d6f2690a4f83501dda3df121	Admin	7	2020-03-07 12:19:18.321152	2020-03-07 12:19:18.321152
+9	b72f866f63435b8cd7c93d15	Admin	1	2020-03-14 11:27:59.866291	2020-03-14 11:27:59.866291
+10	e3ac3254f069f7e7ac05e8ae	Admin	1	2020-03-18 16:18:19.090348	2020-03-18 16:18:19.090348
+11	01609962e7e227bfda302818	Admin	1	2020-03-21 05:30:32.80379	2020-03-21 05:30:32.80379
+12	22222e7621259916ecc54286	Admin	8	2020-03-21 08:57:53.860639	2020-03-21 08:57:53.860639
+13	b20e9ced6ec0ad34428c4349	User	5	2020-03-21 09:10:36.619371	2020-03-21 09:10:36.619371
+14	d5144bb982d1912ed637a94c	Admin	9	2020-03-21 09:19:48.573783	2020-03-21 09:19:48.573783
+15	0809b31142b380fbf1cad12f	Admin	1	2020-03-22 04:40:06.491806	2020-03-22 04:40:06.491806
+16	eb0254611f6509a9b4b141bc	Admin	1	2020-03-22 04:40:12.411511	2020-03-22 04:40:12.411511
+17	b17af9193ff242be63e08e24	Admin	1	2020-03-22 05:29:39.698775	2020-03-22 05:29:39.698775
+18	ca6c25deb4bc4e245fb274ba	Admin	1	2020-03-22 05:52:55.923408	2020-03-22 05:52:55.923408
+19	c6510cb76703b18fdd18d2b2	Admin	10	2020-03-22 05:59:39.517236	2020-03-22 05:59:39.517236
+20	b45d81d7f315fa9129fd00c3	Admin	11	2020-03-22 06:00:21.427447	2020-03-22 06:00:21.427447
+21	937fb497849d1ad8248942e8	Admin	1	2020-03-22 07:29:47.677796	2020-03-22 07:29:47.677796
+24	5ef8663b323d7db28988060a	Admin	1	2020-03-22 08:41:56.689938	2020-03-22 08:41:56.689938
+26	a0f82a6418d99d42750f78b3	User	7	2020-03-28 04:56:48.028102	2020-03-28 04:56:48.028102
+29	21eec916264f324c5acb7888	Admin	1	2020-04-04 08:14:25.994225	2020-04-04 08:14:25.994225
+30	115e20f5195d5a00ddc1f4d5	Admin	1	2020-04-04 12:25:56.804702	2020-04-04 12:25:56.804702
+31	856ab807a78cf005cfab5527	Admin	1	2020-04-11 04:33:43.704891	2020-04-11 04:33:43.704891
+32	cb3b185389df58cfe493e1a1	Admin	1	2020-04-11 05:08:27.371005	2020-04-11 05:08:27.371005
+33	f1b04b5cebe2328019c66216	Admin	1	2020-04-11 05:51:15.700066	2020-04-11 05:51:15.700066
+35	1edbd5834fb6663b88bdf10c	User	9	2020-04-12 08:34:51.421414	2020-04-12 08:34:51.421414
+39	fb3fec5c6db67a86b7b37ebb	User	9	2020-05-02 11:30:22.77379	2020-05-02 11:30:22.77379
+40	0e7bf1eee5e422eb45c846e2	User	9	2020-05-02 11:31:04.600196	2020-05-02 11:31:04.600196
+44	e75cb1cb5a0c2a59a23c5312	User	14	2020-05-09 05:10:46.080219	2020-05-09 05:10:46.080219
+45	8486a136a691d668c51defff	User	14	2020-05-09 05:10:55.980706	2020-05-09 05:10:55.980706
+46	dec9882994b341eab813529b	Admin	1	2020-05-09 12:00:54.885365	2020-05-09 12:00:54.885365
+48	f178cc05635a00ac6536d5ed	User	14	2020-05-09 12:17:09.884444	2020-05-09 12:17:09.884444
+50	d07d93de8d284d7e1284be5c	User	14	2020-05-10 03:45:46.119658	2020-05-10 03:45:46.119658
+55	e990d4405fd93a07ead5b493	Admin	1	2020-05-10 11:15:22.166668	2020-05-10 11:15:22.166668
+56	199c83589e15abaa777b8f38	User	1	2020-05-10 11:50:03.177472	2020-05-10 11:50:03.177472
+58	cfeba454dfa942262a4defb3	User	2	2020-05-10 12:58:48.759084	2020-05-10 12:58:48.759084
+60	f5cbdebb0046c7d420a2af25	User	1	2020-05-10 13:24:46.412252	2020-05-10 13:24:46.412252
+61	595d681008dd29892d25ba6a	User	1	2020-05-10 13:24:46.755093	2020-05-10 13:24:46.755093
+62	ce10eee202daec506e982112	User	1	2020-05-10 13:24:47.076928	2020-05-10 13:24:47.076928
+63	65c18ed551d351d3dc7721b5	User	1	2020-05-10 13:24:47.306171	2020-05-10 13:24:47.306171
+65	dd54e1a68e149a8146d23ac1	User	2	2020-05-11 04:28:41.070168	2020-05-11 04:28:41.070168
+66	b160961cbca1a9d015e63717	User	2	2020-05-11 04:28:42.365955	2020-05-11 04:28:42.365955
+70	d307d765579af837ee72bc0b	User	1	2020-05-17 12:19:40.856697	2020-05-17 12:19:40.856697
+71	7e465dfdf03fb2a204d80598	User	1	2020-05-17 12:19:41.397501	2020-05-17 12:19:41.397501
+72	3d00f3038da5bae2a62e79cb	User	1	2020-05-17 12:19:45.204112	2020-05-17 12:19:45.204112
+73	fb3fb9de4b44458ba630ba9c	User	1	2020-05-17 12:19:45.60418	2020-05-17 12:19:45.60418
+74	561fde16ad78e431b9d3eaf1	User	1	2020-05-17 12:19:45.805813	2020-05-17 12:19:45.805813
+75	c4c2345b473795b46d413ee5	User	1	2020-05-17 13:36:58.22535	2020-05-17 13:36:58.22535
+76	4243f8cce62c47dab78fed77	User	18	2020-05-17 15:37:45.68338	2020-05-17 15:37:45.68338
+79	80cbfb07beadc727d1dd7fc9	User	14	2020-05-24 13:17:03.278297	2020-05-24 13:17:03.278297
+81	a7d3361f70e9db2ae89c266b	Admin	19	2020-05-31 10:47:56.70468	2020-05-31 10:47:56.70468
+84	ed2897508538cadf8a1b9dd1	User	20	2020-06-01 11:37:50.177121	2020-06-01 11:37:50.177121
+85	90c2f9f7e09ad9c244b79d23	Admin	20	2020-06-06 13:27:00.661026	2020-06-06 13:27:00.661026
+86	bad8d2e9e1567f7c2c12a04a	Admin	21	2020-06-06 13:28:23.155034	2020-06-06 13:28:23.155034
+87	0837c11df7e39f973adec73e	User	21	2020-06-07 04:30:34.886399	2020-06-07 04:30:34.886399
+\.
+
+
+--
+-- Data for Name: banners; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.banners (id, created_at, updated_at) FROM stdin;
+2	2020-03-14 09:36:38.802869	2020-03-14 09:36:38.804764
+3	2020-03-14 09:37:03.102969	2020-03-14 09:37:03.10526
+\.
+
+
+--
+-- Data for Name: bookings; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.bookings (id, booking_date, time_from, time_to, product_id, created_at, updated_at, is_done, is_confirmed, user_id) FROM stdin;
+10	2020-04-30	\N	\N	6	2020-04-18 13:10:40.662091	2020-04-18 13:10:40.662091	f	\N	9
+12	2020-04-18	\N	\N	6	2020-04-18 13:39:00.846666	2020-04-18 13:39:00.846666	f	\N	11
+13	2020-04-19	\N	\N	7	2020-04-19 04:29:42.578912	2020-04-19 04:29:42.578912	f	\N	11
+19	2020-05-14	\N	\N	6	2020-05-09 10:43:47.953688	2020-05-09 10:43:47.953688	f	\N	14
+20	2020-05-23	\N	\N	6	2020-05-09 12:34:19.300978	2020-05-09 12:34:19.300978	f	\N	14
+22	2020-05-23	\N	\N	15	2020-05-09 12:59:54.527671	2020-05-09 12:59:54.527671	f	\N	14
+23	2020-05-23	\N	\N	15	2020-05-09 12:59:54.683821	2020-05-09 12:59:54.683821	f	\N	14
+24	2020-05-23	\N	\N	15	2020-05-09 12:59:54.717242	2020-05-09 12:59:54.717242	f	\N	14
+25	2020-05-31	\N	\N	16	2020-05-10 13:00:25.703362	2020-05-10 13:00:25.703362	f	\N	2
+\.
+
+
+--
+-- Data for Name: carts; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.carts (id, qty, user_id, product_id, created_at, updated_at, color_id, size_id) FROM stdin;
+34	\N	1	5	2020-05-10 13:28:56.395625	2020-05-10 13:28:56.395625	2	1
+\.
+
+
+--
+-- Data for Name: categories; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.categories (id, name, created_at, updated_at, category_type) FROM stdin;
+1	Photography	2020-02-20 16:01:43.351742	2020-02-20 16:01:43.354258	booking
+2	Band	2020-02-20 16:02:13.795236	2020-02-20 16:02:13.798302	booking
+3	Shopping	2020-02-20 16:02:34.165533	2020-02-20 16:02:34.16931	buying
+\.
+
+
+--
+-- Data for Name: cities; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.cities (id, name, created_at, updated_at) FROM stdin;
+1	Ahmedabad	2020-02-19 18:51:33.389124	2020-02-19 18:51:33.389124
+2	Surat	2020-05-17 09:11:55.866663	2020-05-17 09:11:55.866663
+\.
+
+
+--
+-- Data for Name: colors; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.colors (id, color_code, created_at, updated_at) FROM stdin;
+2	#0000ff	2020-03-07 07:11:58.859441	2020-03-07 07:11:58.859441
+3	#6db357	2020-03-07 07:12:11.990816	2020-03-07 07:12:11.990816
+4	#ff0000	2020-03-07 07:12:17.107475	2020-03-07 07:12:17.107475
+\.
+
+
+--
+-- Data for Name: colors_products; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.colors_products (product_id, color_id) FROM stdin;
+5	2
+5	3
+3	4
+13	2
+14	2
+15	2
+16	2
+19	2
+21	4
+22	4
+23	4
+\.
+
+
+--
+-- Data for Name: feedbacks; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.feedbacks (id, msg, created_at, updated_at, is_confirmed, first_name, last_name, mobile, email) FROM stdin;
+1	It looks like this link is broken on your site: http://prohelpcenter.online/index.html\n\nI thought you would like to know :).  Silly mistakes can ruin your site's credibility.  I've used a tool called linkSniff.com in the past to keep mistakes off of my website.\n\n-Kerri	2020-03-31 02:50:28.350083	2020-03-31 02:50:28.350083	f	Kerri	Campbell	610-874-3473	Campell2819@yahoo.com
+\.
+
+
+--
+-- Data for Name: notifications; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.notifications (id, msg, created_at, updated_at) FROM stdin;
+1	abc demo	2020-06-06 13:09:26.94119	2020-06-06 13:09:26.94119
+\.
+
+
+--
+-- Data for Name: orders; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.orders (id, order_date, order_receive_date, product_id, created_at, updated_at, is_confirmed, user_id, address_id) FROM stdin;
+5	2020-03-18	2020-03-24	3	2020-03-18 17:10:21.268255	2020-03-18 17:10:21.268255	\N	1	5
+6	2020-03-18	2020-03-24	3	2020-03-18 17:10:23.540923	2020-03-18 17:10:23.540923	\N	1	5
+10	2020-04-19	2020-04-25	5	2020-04-19 04:49:03.653102	2020-04-19 04:49:03.653102	\N	1	8
+11	2020-04-19	2020-04-25	3	2020-04-19 05:47:14.399492	2020-04-19 05:47:14.399492	\N	9	10
+12	2020-04-19	2020-04-25	3	2020-04-19 05:47:42.874375	2020-04-19 05:47:42.874375	\N	9	11
+13	2020-04-19	2020-04-25	3	2020-04-19 10:16:05.971909	2020-04-19 10:16:05.971909	\N	11	12
+14	2020-04-29	2020-05-05	3	2020-04-29 05:22:40.145932	2020-04-29 05:22:40.145932	\N	12	13
+15	2020-05-06	2020-05-12	5	2020-05-06 08:20:46.749981	2020-05-06 08:20:46.749981	\N	1	14
+16	2020-05-06	2020-05-12	5	2020-05-06 08:20:49.136805	2020-05-06 08:20:49.136805	\N	1	14
+17	2020-05-06	2020-05-12	3	2020-05-06 08:20:51.460477	2020-05-06 08:20:51.460477	\N	1	14
+18	2020-05-09	2020-05-15	3	2020-05-09 13:02:00.01874	2020-05-09 13:02:00.01874	\N	14	15
+19	2020-05-09	2020-05-15	3	2020-05-09 13:07:39.845205	2020-05-09 13:07:39.845205	\N	14	16
+20	2020-05-09	2020-05-15	14	2020-05-09 13:07:39.855666	2020-05-09 13:07:39.855666	\N	14	16
+21	2020-05-10	2020-05-16	15	2020-05-10 11:51:22.583666	2020-05-10 11:51:22.583666	\N	1	17
+22	2020-05-10	2020-05-16	16	2020-05-10 13:02:22.977129	2020-05-10 13:02:22.977129	\N	2	18
+23	2020-05-10	2020-05-16	3	2020-05-10 13:02:22.994553	2020-05-10 13:02:22.994553	\N	2	18
+24	2020-05-10	2020-05-16	14	2020-05-10 13:02:23.005411	2020-05-10 13:02:23.005411	\N	2	18
+25	2020-05-16	2020-05-22	15	2020-05-16 11:20:35.338671	2020-05-16 11:20:35.338671	\N	16	20
+26	2020-05-16	2020-05-22	15	2020-05-16 11:20:51.264228	2020-05-16 11:20:51.264228	\N	16	21
+\.
+
+
+--
+-- Data for Name: orders_products; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.orders_products (product_id, order_id) FROM stdin;
+\.
+
+
+--
+-- Data for Name: products; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.products (id, name, price, category_id, sub_category_id, created_at, updated_at, description, admin_id, is_first_product) FROM stdin;
+3	Men Shirts	300	3	1	2020-02-20 16:08:49.6123	2020-02-20 16:08:49.616249	<p><strong>Good</strong> Looking and <strong>Best</strong> Quality</p>\r\n	1	f
+5	Women Clothes	1600	3	2	2020-02-20 16:10:07.749925	2020-02-20 16:10:07.752108	<p>Good Quality</p>\r\n	1	f
+7	Band3	2200	2	\N	2020-04-05 12:40:48.609722	2020-04-05 12:43:52.97025	<p>Best band ever</p>\r\n	1	f
+6	Band2	2000	2	\N	2020-04-05 12:40:05.636514	2020-04-05 12:45:10.235444	<p>Contact us</p>\r\n	1	f
+13	ufchhc	855	3	2	2020-05-02 15:30:07.798877	2020-05-02 15:30:07.804527	v gxg	15	t
+14	prakash 	2536	3	1	2020-05-02 15:32:08.774036	2020-05-02 15:32:08.779096	patelsandip970@gmail.com ggvvv	15	f
+15	prakash 	2536	1	1	2020-05-02 15:32:25.196565	2020-05-02 15:32:25.202506	patelsandip970@gmail.com ggvvv	15	f
+16	prakash 	2536	1	1	2020-05-02 15:32:41.240161	2020-05-02 15:32:41.257567	patelsandip970@gmail.com ggvvv	15	f
+19	test	256	1	\N	2020-05-03 08:30:57.489226	2020-05-03 08:30:57.494532	test 	15	f
+21	yyyyy	696	1	\N	2020-05-10 04:44:19.523321	2020-05-10 04:44:19.527742	test 	16	f
+22	raja band 	3000	2	\N	2020-05-16 11:42:39.324702	2020-05-16 11:42:39.330329	avoid 	18	t
+23	Chan's band	2500	2	\N	2020-05-16 11:49:41.87438	2020-05-16 11:49:41.878462	test	18	f
+\.
+
+
+--
+-- Data for Name: products_orders_sizes_colors; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.products_orders_sizes_colors (id, product_id, order_id, size_id, color_id, created_at, updated_at, qty, user_id) FROM stdin;
+7	5	10	1	2	2020-04-19 04:49:03.681711	2020-04-19 04:49:03.681711	1	1
+8	5	10	1	3	2020-04-19 04:49:03.686897	2020-04-19 04:49:03.686897	1	1
+9	3	11	1	2	2020-04-19 05:47:14.431656	2020-04-19 05:47:14.431656	1	9
+10	3	12	1	2	2020-04-19 05:47:42.879069	2020-04-19 05:47:42.879069	1	9
+13	5	15	1	2	2020-05-06 08:20:46.756577	2020-05-06 08:20:46.756577	1	1
+14	5	16	1	3	2020-05-06 08:20:49.142219	2020-05-06 08:20:49.142219	1	1
+\.
+
+
+--
+-- Data for Name: products_sizes; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.products_sizes (product_id, size_id) FROM stdin;
+5	1
+22	1
+\.
+
+
+--
+-- Data for Name: schema_migrations; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.schema_migrations (version) FROM stdin;
+20191207055039
+20191207055109
+20191207055405
+20191207055442
+20191207055554
+20191207055704
+20191207055818
+20191207060748
+20191207075948
+20191207151442
+20191207152957
+20191208090612
+20191208091223
+20191210163539
+20191210164447
+20191210165303
+20191211171820
+20191211174308
+20191214055022
+20191214082353
+20191214114558
+20191214123151
+20191214123810
+20191215073730
+20191215122313
+20191215122414
+20191215170641
+20191215172134
+20191221152837
+20191223162141
+20191223163114
+20200119122200
+20200215091553
+20200215100446
+20200215103458
+20200223082948
+20200228175820
+20200229144857
+20200303165302
+20200303165329
+20200303172123
+20200305161505
+20200308162704
+20200310043005
+20200310054059
+20200310073322
+20200503041014
+\.
+
+
+--
+-- Data for Name: sizes; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.sizes (id, size_no, created_at, updated_at) FROM stdin;
+1	M	2020-03-07 07:12:37.507064	2020-03-07 07:12:37.507064
+\.
+
+
+--
+-- Data for Name: sub_categories; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.sub_categories (id, name, category_id, created_at, updated_at) FROM stdin;
+1	Men's Clothes	3	2020-02-20 16:02:59.287107	2020-02-20 16:02:59.289653
+2	Women Clothes	3	2020-02-20 16:04:17.835531	2020-02-20 16:04:17.83872
+\.
+
+
+--
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.users (id, email, phone, user_type, dob, created_at, updated_at, encrypted_password, reset_password_token, reset_password_sent_at, remember_created_at, mobile) FROM stdin;
+2	sarthak2417@gmail.com	\N	\N	\N	2020-02-22 10:51:40.926083	2020-02-22 10:51:40.926083	$2a$11$PK4gO/2HSAt7Qo5zXwXKGeXVV7AlQ./LQQzC57eZ4ZDsupqNy.F1y	\N	\N	\N	8460861031
+3	hello@gmail.com	\N	\N	\N	2020-03-07 09:21:13.782439	2020-03-07 09:21:13.782439	$2a$11$Ywr7iOIX3HiWlQZrUK8A.uVKLtCnhH7ksK53OzVNr710GNta4nXoG	\N	\N	\N	 \t\t1234567890
+4	sarthak1997jain@gmail.com	\N	\N	\N	2020-03-12 11:53:29.026237	2020-03-12 11:53:29.026237	$2a$11$N5JzBo2AvEUFzV4jf7OWz.sEiUayTreWmxztsV8I.Lrx2q5nfA2Ry	\N	\N	\N	8460861031
+5	s@gmail.com	\N	\N	\N	2020-03-21 09:10:36.614174	2020-03-21 09:10:36.614174	$2a$11$rtIS8855QB70FaN6wJv.L.ZI5EqAOvySgOX7hwvExILV7vtYebKga	\N	\N	\N	1236958470
+6	abc@gmail.com	\N	\N	\N	2020-03-22 05:33:46.658239	2020-03-22 05:33:46.658239	$2a$11$Rc1NRawlusJ6qbVaeR0WEOmtxCvbmsrkXa/ErlpDV.rywYqJVzaj2	\N	\N	\N	9879475154
+7	b@gmail.com	\N	\N	\N	2020-03-28 04:55:33.795721	2020-03-28 04:55:33.795721	$2a$11$BFQS9w8mSxEGvSgQksIEjOzfC1.gKMNKo.nUEv6cYo17YSdPBWeuu	\N	\N	\N	586923569
+8	shaadiholic@gmail.com	\N	\N	\N	2020-04-09 04:40:16.90834	2020-04-09 04:40:16.90834	$2a$11$7J9hsYGmfOXnwd.cmCI3NeyKXLNjplwrgL/BSbJdJEW37ZQIOEWx6	\N	\N	\N	8460861203
+9	test@gmail.com	\N	\N	\N	2020-04-12 08:32:27.964647	2020-04-12 08:32:27.964647	$2a$11$mstHFrwp1aId7t1dq7aoIeUFYTu/LeaFJjZBEnzOtWA5cUrrI8pSC	\N	\N	\N	25398569
+10	k@gmail.com	\N	\N	\N	2020-04-12 10:41:57.724683	2020-04-12 10:41:57.724683	$2a$11$GOYdiBfaVb3cMwI9RYwQRu.N76Z2UqzohEoLS0Bmocqhdtkgky6vW	\N	\N	\N	6868686868
+11	gh@gmail.com	\N	\N	\N	2020-04-18 13:18:38.410118	2020-04-18 13:18:38.410118	$2a$11$lg27skOhd/oHLBQrrt7Gq.2WWIyjyCgYNE/6NqUBqL6fOVHpLKeGK	\N	\N	\N	65995959595
+12	mahaviroiltraders@gmail.com	\N	\N	\N	2020-04-29 05:21:42.326402	2020-04-29 05:21:42.326402	$2a$11$.0i.RtCqNa569rI8gNqa/efX53b8zmcflZNZ92oZg613WQWGiWVXu	\N	\N	\N	8460861203
+13	bhrugesh@gmail.com	\N	\N	\N	2020-05-02 13:29:52.064	2020-05-02 13:29:52.064	$2a$11$JvNlbm.7hri.xWpj3AxN/.FqnbCWz3amOdMNVzmBxgykj914hg.7W	\N	\N	\N	1234567890
+15	gb@gmail.com	\N	\N	\N	2020-05-10 05:23:44.528023	2020-05-10 05:23:44.528023	$2a$11$EbXgfXp.ZzSeIomqr.1ROuuAVqdiEVbGwUCicjSqR4WgCYNPRK/TK	\N	\N	\N	2536968563
+16	hb@gmail.com	\N	\N	\N	2020-05-16 11:19:00.475278	2020-05-16 11:19:00.475278	$2a$11$AyW6Qce.anUhRWHTiS1V.upWhDis3u6umJTYedsB2kdGJy5d8UY82	\N	\N	\N	2536968536
+17	jk@gmail.com	\N	\N	\N	2020-05-17 09:08:29.126377	2020-05-17 09:08:29.126377	$2a$11$yYZl6fazHwdRboji1UrcK.q7Rl9v3akugoy9foGdzrYsERM6mDIYG	\N	\N	\N	8953147858
+18	ajitpjain@gmail.com	\N	\N	\N	2020-05-17 15:37:45.678991	2020-05-17 15:37:45.678991	$2a$11$7XBvC31Lo4Kk2G7DgzaEiuUrNZnOcuJRv8js0ooeMDaoBhOQ.TRNi	\N	\N	\N	8460861032
+1	ashishsheladiya1997@gmail.com	\N	\N	\N	2020-02-20 17:41:10.501297	2020-05-24 11:24:09.510621	$2a$11$BVqjarZXUaCZnw6YdSEmYObnnpIpHGzr5CbWTM07i7TsRtFiErQ5y	c31e7912e610dfdd73ab91ed8419eee904c8b54658717e2857cd71b71308b99c	2020-05-24 11:24:09.509794	\N	9879475154
+14	v@gmail.com	\N	\N	\N	2020-05-09 04:48:38.324126	2020-05-24 12:39:47.120779	$2a$11$OAKxjkMI65Uc3QvXOeY8c.wfy3vuoTRKHR.Ql2EMX85RuGX4o9cYe	b518ec1991c9acd23ca12ff32273a7b6f6dee92c2a32f265f0072a24a7765ccb	2020-05-24 12:39:47.120381	\N	2536253625
+19	f@gmail.com	\N	\N	\N	2020-05-31 05:20:39.321485	2020-05-31 05:20:39.321485	$2a$11$4qs3RQZmS8tFVULWYNsx2erHY0PI2i.P.pVlRwqi46orBzy43Su7O	\N	\N	\N	2536856923
+20	sarthakbioenergy01@gmail.com	\N	\N	\N	2020-06-01 11:37:50.173724	2020-06-01 11:37:50.173724	$2a$11$9newgLfV78fSBv54xexSGOCNTN38d4jExE2NMqceA5bAYKwQI6fX2	\N	\N	\N	8460861031
+21	n@gmail.com	\N	\N	\N	2020-06-07 04:30:34.880671	2020-06-07 04:30:34.880671	$2a$11$FcwYoe/d1qWbuMbD31xM6O/bmfGA7mvYPb9oZCB10/.Dlu09e.58q	\N	\N	\N	9685236958
+\.
+
+
+--
+-- Name: active_storage_attachments_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.active_storage_attachments_id_seq', 35, true);
+
+
+--
+-- Name: active_storage_blobs_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.active_storage_blobs_id_seq', 42, true);
+
+
+--
+-- Name: addresses_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.addresses_id_seq', 21, true);
+
+
+--
+-- Name: admins_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.admins_id_seq', 21, true);
+
+
+--
+-- Name: areas_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.areas_id_seq', 7, true);
+
+
+--
+-- Name: auth_tokens_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.auth_tokens_id_seq', 87, true);
+
+
+--
+-- Name: banners_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.banners_id_seq', 3, true);
+
+
+--
+-- Name: bookings_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.bookings_id_seq', 25, true);
+
+
+--
+-- Name: carts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.carts_id_seq', 35, true);
+
+
+--
+-- Name: categories_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.categories_id_seq', 3, true);
+
+
+--
+-- Name: cities_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.cities_id_seq', 3, true);
+
+
+--
+-- Name: colors_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.colors_id_seq', 4, true);
+
+
+--
+-- Name: feedbacks_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.feedbacks_id_seq', 1, true);
+
+
+--
+-- Name: notifications_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.notifications_id_seq', 1, true);
+
+
+--
+-- Name: orders_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.orders_id_seq', 26, true);
+
+
+--
+-- Name: products_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.products_id_seq', 25, true);
+
+
+--
+-- Name: products_orders_sizes_colors_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.products_orders_sizes_colors_id_seq', 24, true);
+
+
+--
+-- Name: sizes_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.sizes_id_seq', 2, true);
+
+
+--
+-- Name: sub_categories_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.sub_categories_id_seq', 4, true);
+
+
+--
+-- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.users_id_seq', 21, true);
+
+
+--
+-- Name: active_storage_attachments active_storage_attachments_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.active_storage_attachments
+    ADD CONSTRAINT active_storage_attachments_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: active_storage_blobs active_storage_blobs_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.active_storage_blobs
+    ADD CONSTRAINT active_storage_blobs_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: addresses addresses_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.addresses
+    ADD CONSTRAINT addresses_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: admins admins_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.admins
+    ADD CONSTRAINT admins_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: ar_internal_metadata ar_internal_metadata_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.ar_internal_metadata
+    ADD CONSTRAINT ar_internal_metadata_pkey PRIMARY KEY (key);
+
+
+--
+-- Name: areas areas_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.areas
+    ADD CONSTRAINT areas_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: auth_tokens auth_tokens_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.auth_tokens
+    ADD CONSTRAINT auth_tokens_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: banners banners_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.banners
+    ADD CONSTRAINT banners_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: bookings bookings_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.bookings
+    ADD CONSTRAINT bookings_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: carts carts_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.carts
+    ADD CONSTRAINT carts_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: categories categories_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.categories
+    ADD CONSTRAINT categories_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: cities cities_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.cities
+    ADD CONSTRAINT cities_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: colors colors_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.colors
+    ADD CONSTRAINT colors_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: feedbacks feedbacks_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.feedbacks
+    ADD CONSTRAINT feedbacks_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: notifications notifications_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.notifications
+    ADD CONSTRAINT notifications_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: orders orders_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.orders
+    ADD CONSTRAINT orders_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: products_orders_sizes_colors products_orders_sizes_colors_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.products_orders_sizes_colors
+    ADD CONSTRAINT products_orders_sizes_colors_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: products products_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.products
+    ADD CONSTRAINT products_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: schema_migrations schema_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.schema_migrations
+    ADD CONSTRAINT schema_migrations_pkey PRIMARY KEY (version);
+
+
+--
+-- Name: sizes sizes_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.sizes
+    ADD CONSTRAINT sizes_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: sub_categories sub_categories_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.sub_categories
+    ADD CONSTRAINT sub_categories_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users
+    ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: index_active_storage_attachments_on_blob_id; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX index_active_storage_attachments_on_blob_id ON public.active_storage_attachments USING btree (blob_id);
+
+
+--
+-- Name: index_active_storage_attachments_uniqueness; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE UNIQUE INDEX index_active_storage_attachments_uniqueness ON public.active_storage_attachments USING btree (record_type, record_id, name, blob_id);
+
+
+--
+-- Name: index_active_storage_blobs_on_key; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE UNIQUE INDEX index_active_storage_blobs_on_key ON public.active_storage_blobs USING btree (key);
+
+
+--
+-- Name: index_addresses_on_user_id; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX index_addresses_on_user_id ON public.addresses USING btree (user_id);
+
+
+--
+-- Name: index_admins_on_area_id; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX index_admins_on_area_id ON public.admins USING btree (area_id);
+
+
+--
+-- Name: index_admins_on_city_id; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX index_admins_on_city_id ON public.admins USING btree (city_id);
+
+
+--
+-- Name: index_admins_on_email; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE UNIQUE INDEX index_admins_on_email ON public.admins USING btree (email);
+
+
+--
+-- Name: index_admins_on_reset_password_token; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE UNIQUE INDEX index_admins_on_reset_password_token ON public.admins USING btree (reset_password_token);
+
+
+--
+-- Name: index_areas_on_city_id; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX index_areas_on_city_id ON public.areas USING btree (city_id);
+
+
+--
+-- Name: index_auth_tokens_on_user_type_and_user_id; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX index_auth_tokens_on_user_type_and_user_id ON public.auth_tokens USING btree (user_type, user_id);
+
+
+--
+-- Name: index_bookings_on_product_id; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX index_bookings_on_product_id ON public.bookings USING btree (product_id);
+
+
+--
+-- Name: index_bookings_on_user_id; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX index_bookings_on_user_id ON public.bookings USING btree (user_id);
+
+
+--
+-- Name: index_carts_on_color_id; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX index_carts_on_color_id ON public.carts USING btree (color_id);
+
+
+--
+-- Name: index_carts_on_product_id; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX index_carts_on_product_id ON public.carts USING btree (product_id);
+
+
+--
+-- Name: index_carts_on_size_id; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX index_carts_on_size_id ON public.carts USING btree (size_id);
+
+
+--
+-- Name: index_carts_on_user_id; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX index_carts_on_user_id ON public.carts USING btree (user_id);
+
+
+--
+-- Name: index_orders_on_address_id; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX index_orders_on_address_id ON public.orders USING btree (address_id);
+
+
+--
+-- Name: index_orders_on_product_id; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX index_orders_on_product_id ON public.orders USING btree (product_id);
+
+
+--
+-- Name: index_orders_on_user_id; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX index_orders_on_user_id ON public.orders USING btree (user_id);
+
+
+--
+-- Name: index_products_on_admin_id; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX index_products_on_admin_id ON public.products USING btree (admin_id);
+
+
+--
+-- Name: index_products_on_category_id; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX index_products_on_category_id ON public.products USING btree (category_id);
+
+
+--
+-- Name: index_products_on_sub_category_id; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX index_products_on_sub_category_id ON public.products USING btree (sub_category_id);
+
+
+--
+-- Name: index_products_orders_sizes_colors_on_color_id; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX index_products_orders_sizes_colors_on_color_id ON public.products_orders_sizes_colors USING btree (color_id);
+
+
+--
+-- Name: index_products_orders_sizes_colors_on_order_id; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX index_products_orders_sizes_colors_on_order_id ON public.products_orders_sizes_colors USING btree (order_id);
+
+
+--
+-- Name: index_products_orders_sizes_colors_on_product_id; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX index_products_orders_sizes_colors_on_product_id ON public.products_orders_sizes_colors USING btree (product_id);
+
+
+--
+-- Name: index_products_orders_sizes_colors_on_size_id; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX index_products_orders_sizes_colors_on_size_id ON public.products_orders_sizes_colors USING btree (size_id);
+
+
+--
+-- Name: index_products_orders_sizes_colors_on_user_id; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX index_products_orders_sizes_colors_on_user_id ON public.products_orders_sizes_colors USING btree (user_id);
+
+
+--
+-- Name: index_sub_categories_on_category_id; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX index_sub_categories_on_category_id ON public.sub_categories USING btree (category_id);
+
+
+--
+-- Name: index_users_on_email; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE UNIQUE INDEX index_users_on_email ON public.users USING btree (email);
+
+
+--
+-- Name: index_users_on_reset_password_token; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE UNIQUE INDEX index_users_on_reset_password_token ON public.users USING btree (reset_password_token);
+
+
+--
+-- Name: areas fk_rails_0bb70140b1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.areas
+    ADD CONSTRAINT fk_rails_0bb70140b1 FOREIGN KEY (city_id) REFERENCES public.cities(id);
+
+
+--
+-- Name: carts fk_rails_1d504fead6; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.carts
+    ADD CONSTRAINT fk_rails_1d504fead6 FOREIGN KEY (color_id) REFERENCES public.colors(id);
+
+
+--
+-- Name: carts fk_rails_4463c25bf8; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.carts
+    ADD CONSTRAINT fk_rails_4463c25bf8 FOREIGN KEY (size_id) REFERENCES public.sizes(id);
+
+
+--
+-- Name: addresses fk_rails_48c9e0c5a2; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.addresses
+    ADD CONSTRAINT fk_rails_48c9e0c5a2 FOREIGN KEY (user_id) REFERENCES public.users(id);
+
+
+--
+-- Name: products_orders_sizes_colors fk_rails_719ada0c10; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.products_orders_sizes_colors
+    ADD CONSTRAINT fk_rails_719ada0c10 FOREIGN KEY (user_id) REFERENCES public.users(id);
+
+
+--
+-- Name: orders fk_rails_774ef80392; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.orders
+    ADD CONSTRAINT fk_rails_774ef80392 FOREIGN KEY (address_id) REFERENCES public.addresses(id);
+
+
+--
+-- Name: sub_categories fk_rails_8e75c2ee78; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.sub_categories
+    ADD CONSTRAINT fk_rails_8e75c2ee78 FOREIGN KEY (category_id) REFERENCES public.categories(id);
+
+
+--
+-- Name: carts fk_rails_916f2a1419; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.carts
+    ADD CONSTRAINT fk_rails_916f2a1419 FOREIGN KEY (product_id) REFERENCES public.products(id);
+
+
+--
+-- Name: products_orders_sizes_colors fk_rails_ae748aa57d; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.products_orders_sizes_colors
+    ADD CONSTRAINT fk_rails_ae748aa57d FOREIGN KEY (color_id) REFERENCES public.colors(id);
+
+
+--
+-- Name: active_storage_attachments fk_rails_c3b3935057; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.active_storage_attachments
+    ADD CONSTRAINT fk_rails_c3b3935057 FOREIGN KEY (blob_id) REFERENCES public.active_storage_blobs(id);
+
+
+--
+-- Name: products_orders_sizes_colors fk_rails_d53a6c1ff9; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.products_orders_sizes_colors
+    ADD CONSTRAINT fk_rails_d53a6c1ff9 FOREIGN KEY (order_id) REFERENCES public.orders(id);
+
+
+--
+-- Name: products fk_rails_db9640ef46; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.products
+    ADD CONSTRAINT fk_rails_db9640ef46 FOREIGN KEY (sub_category_id) REFERENCES public.sub_categories(id);
+
+
+--
+-- Name: products_orders_sizes_colors fk_rails_dfabe6005a; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.products_orders_sizes_colors
+    ADD CONSTRAINT fk_rails_dfabe6005a FOREIGN KEY (size_id) REFERENCES public.sizes(id);
+
+
+--
+-- Name: orders fk_rails_dfb33b2de0; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.orders
+    ADD CONSTRAINT fk_rails_dfb33b2de0 FOREIGN KEY (product_id) REFERENCES public.products(id);
+
+
+--
+-- Name: products_orders_sizes_colors fk_rails_e5590832ff; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.products_orders_sizes_colors
+    ADD CONSTRAINT fk_rails_e5590832ff FOREIGN KEY (product_id) REFERENCES public.products(id);
+
+
+--
+-- Name: carts fk_rails_ea59a35211; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.carts
+    ADD CONSTRAINT fk_rails_ea59a35211 FOREIGN KEY (user_id) REFERENCES public.users(id);
+
+
+--
+-- Name: bookings fk_rails_f112e0b07f; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.bookings
+    ADD CONSTRAINT fk_rails_f112e0b07f FOREIGN KEY (product_id) REFERENCES public.products(id);
+
+
+--
+-- Name: products fk_rails_fb915499a4; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.products
+    ADD CONSTRAINT fk_rails_fb915499a4 FOREIGN KEY (category_id) REFERENCES public.categories(id);
+
+
+--
+-- PostgreSQL database dump complete
+--
+

@@ -1,0 +1,13 @@
+<% if @find_city.present? %>
+	toastr.error('Record already present!!!');
+<% else %>
+	$('.new_city_btn').removeClass("hide");
+	$('.panel-body').remove();
+	<% if @issaved %>
+		$(".table-city tbody tr:first").before("<%= j render(partial: 'city_data', locals: {city: @city}) %>");
+		toastr.success('Record Insert Successfully');
+	<% else %>
+		toastr.error('Record not created...');
+	<% end %>
+<% end %>
+onAjaxScroll();

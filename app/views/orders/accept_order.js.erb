@@ -1,0 +1,6 @@
+<% if @isdone %>
+	$(".tr_<%= @order.id %> .status").html("Confirmed");
+	toastr.success('Order Confirmed Successfully');
+<% else %>
+	toastr.error('Order not Confirmed');
+<% end %>

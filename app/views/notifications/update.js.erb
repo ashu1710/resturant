@@ -1,0 +1,9 @@
+$('.new_notification_btn').removeClass("hide");
+$('.panel-body').remove();
+<% if @is_updated %>
+	$(".tr_<%= @notification.id %>").replaceWith("<%= j render(partial: 'notification_data', locals: {notification: @notification}) %>");
+	toastr.success('Record Updated Successfully');
+<% else %>
+	toastr.error('Record not updated...');
+<% end %>
+onAjaxScroll();

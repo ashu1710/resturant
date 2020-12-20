@@ -1,0 +1,13 @@
+<tr class="tr_<%= banner.id %>">
+    <td>
+        <%= image_tag banner.banner_image, class: 'product-img' %>
+    </td>
+    <td><%= banner.product_link_redirect || '-' %></td>
+    <td>
+        <div class="btn-group">
+            <%= link_to banner_path(banner), method: :delete, remote: true, class: 'btn btn-danger' do %>
+                <i class="icon_close_alt2"></i>
+            <% end %>
+        </div>
+    </td>
+</tr>

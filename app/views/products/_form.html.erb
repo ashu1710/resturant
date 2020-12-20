@@ -1,0 +1,93 @@
+<div class="panel-body">
+    <div class="form">
+        <%= form_for product,remote: :true,html: { class: 'form-validate form-horizontal' } do |f| %>
+            <%= f.hidden_field :id %>
+            <div class="form-group">
+                <label for="cname" class="control-label col-lg-2">Name<span class="required">*</span></label>
+                <div class="col-lg-10">
+                    <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control" %>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="cname" class="control-label col-lg-2">Category Name<span class="required">*</span></label>
+                <div class="col-lg-4">
+                    <%= f.select(:category_id, @categories, {}, { :class => 'form-control', style: 'height: 100%;' }) %>
+                </div>
+
+                <label for="cname" class="control-label sub_category_label col-lg-2">Sub-category Name</label>
+                <div class="col-lg-4">
+                    <%= f.select(:sub_category_id, (@sub_category.present? ? @sub_category : [["Select Category first", ""]]), {}, { class: 'form-control', style: 'height: 100%;' }) %>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="cname" class="control-label col-lg-2">Price<span class="required">*</span></label>
+                <div class="col-lg-10">
+                    <%= f.number_field :price, class: "form-control" %>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="cname" class="control-label col-lg-2">Description<span class="required">*</span></label>
+                <div class="col-lg-10">
+                    <%= f.cktext_area :description, placeholder: "Product Description" %>
+                </div>
+            </div>
+
+
+            <% if f.object.new_record? || f.object.sub_category_id.present? %>
+                <div class="form-group color_list">
+                    <label for="cname" class="control-label col-lg-2">Size<span class="required">*</span></label>
+                    <div class="col-lg-10">
+                        <% Size.all.each do |size| %>
+                            <label class="checkbox-inline">
+                                <%= check_box_tag 'product[size_ids][]', size.id, !f.object.new_record? && f.object.size_ids.include?(size.id) %><%= size.size_no %>
+                            </label>
+                        <% end %>
+                    </div>
+                </div>
+
+                <div class="form-group size_list">
+                    <label for="cname" class="control-label col-lg-2">Color<span class="required">*</span></label>
+                    <div class="col-lg-10">
+                        <% Color.all.each do |color| %>
+                            <label class="checkbox-inline">
+                                <%= check_box_tag 'product[color_ids][]', color.id, !f.object.new_record? && f.object.color_ids.include?(color.id) %>
+                                <div style="background-color: <%= color.color_code %>;width: 40px;height: 20px;"></div>
+                            </label>
+                        <% end %>
+                    </div>
+                </div>
+            <% end %>
+
+            <div class="form-group">
+                <label for="cname" class="control-label col-lg-2">Product Image<span class="required">*</span></label>
+                <div class="col-lg-10">
+                    <%= f.file_field :images, multiple: true,class: "form-control" %>
+                </div>
+            </div>
+
+            <% unless f.object.new_record? %>
+                <div class="form-group">
+                    <label for="cname" class="control-label col-lg-2">Uploaded Images</label>
+                    <% product.images.each do |image| %>
+                        <div class="col-lg-2 col-md-2 product_<%= image.id %>">
+                            <%= link_to image, target: '_blank' do %>
+                                <%= image_tag image, class: 'product-img' %>
+                            <% end %>
+                            <%= link_to 'Delete', 'javascript:void(0);',class: 'btn btn-danger remove_attachment', id: "#{image.id}" %>
+                        </div>
+                    <% end %>
+                </div>
+            <% end %>
+
+            <div class="form-group">
+                <div class="col-lg-offset-2 col-lg-10">
+                    <%= f.submit (f.object.new_record? ? "Save" : "Update"), class: 'btn btn-primary' %>
+                    <button class="btn btn-default btn-cancel-new-form" type="button">Cancel</button>
+                </div>
+            </div>
+        <% end %>
+    </div>
+</div>

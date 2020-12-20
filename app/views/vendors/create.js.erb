@@ -1,0 +1,9 @@
+$('.new_vendor_btn').removeClass("hide");
+$('.panel-body').remove();
+<% if @issaved %>
+	$(".table-vendor tbody tr:first").before("<%= j render(partial: 'vendor_data', locals: {vendor: @vendor}) %>");
+	toastr.success('Record Insert Successfully');
+<% else %>
+	toastr.error('Record not created...');
+<% end %>
+onAjaxScroll();

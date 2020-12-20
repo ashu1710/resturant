@@ -1,0 +1,25 @@
+<div class="container">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'login-form' }) do |f| %>
+        <div class="login-wrap">
+            <p class="login-img"><i class="icon_lock_alt"></i></p>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="icon_profile"></i></span>
+                <%= f.text_field :login,  autofocus: true, autocomplete: "email", class: "form-control", placeholder: "Email"%>
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="icon_key_alt"></i></span>
+                <%= f.password_field :password, class: "form-control", placeholder: "Password" %>
+            </div>
+            <% if devise_mapping.rememberable? %>
+                <label class="checkbox">
+                    <%= f.check_box :remember_me, value: 'remember-me' %>Remember me
+                    <span class="pull-right"> <a href="#"> Forgot Password?</a></span>
+                </label>
+            <% end %>
+            <%= f.submit "Log in", class: 'btn btn-primary btn-lg btn-block' %>
+            <%#= link_to "Signup", new_admin_registration_path, class: 'btn btn-info btn-lg btn-block anchor-tag-link' %>
+        </div>
+    <% end %>
+</div>
+
+<%#= render "admins/shared/links" %>

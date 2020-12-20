@@ -1,0 +1,20 @@
+<tr class="tr_<%= booking.id %>">
+    <td><%= booking.booking_date %></td>
+    <td><%= booking.user.mobile %></td>
+    <td><%= booking.user.email %></td>
+    <td class="status">
+        <%= booking.is_confirmed.present? ? (booking.is_confirmed? ? 'Confirmed' : 'Rejected' ) : "Pending" %>
+    </td>
+    <td>
+        <div class="btn-group">
+            <% if booking.booking_date > Date.today %>
+                <%= link_to accepts_booking_path(booking), remote: true, 'data-toggle': "popover", title: "Accept", class: 'btn btn-success' do %>
+                	<i data-icon="&#x4e;"></i>
+                <% end %>
+                <%= link_to rejects_booking_path(booking), remote: true, class: 'btn btn-danger', 'data-toggle': "popover", title: "Reject" do %>
+                    <i class="icon_close_alt2"></i>
+                <% end %>
+            <% end %>
+        </div>
+    </td>
+</tr>

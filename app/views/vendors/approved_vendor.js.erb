@@ -1,0 +1,6 @@
+<% if @vendor.present? %>
+	toastr.success('Vendor approved Successfully');
+	$(".tr_<%= @vendor.id %> .vendor_approve").html("Approved");
+<% else %>
+	toastr.error('Record Insert Successfully');
+<% end %>

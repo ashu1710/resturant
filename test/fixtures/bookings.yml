@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  booking_date: 2019-12-07
+  time_from: 2019-12-07 11:25:54
+  time_to: 2019-12-07 11:25:54
+  is_confirm: 1
+  user: one
+  product: one
+
+two:
+  booking_date: 2019-12-07
+  time_from: 2019-12-07 11:25:54
+  time_to: 2019-12-07 11:25:54
+  is_confirm: 1
+  user: two
+  product: two

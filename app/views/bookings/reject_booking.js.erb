@@ -1,0 +1,6 @@
+<% if @isdone %>
+	$(".tr_<%= @booking.id %> .status").html("Rejected");
+	toastr.success('Booking Rejected Successfully');
+<% else %>
+	toastr.error('Booking not rejected');
+<% end %>

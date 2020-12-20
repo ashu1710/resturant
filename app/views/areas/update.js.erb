@@ -1,0 +1,13 @@
+<% if @find_area.present? %>
+	toastr.error('Record already present!!!');
+<% else %>
+	$('.new_area_btn').removeClass("hide");
+	$('.panel-body').remove();
+	<% if @is_updated %>
+		$(".tr_<%= @area.id %>").replaceWith("<%= j render(partial: 'areas_data', locals: {area: @area}) %>");
+		toastr.success('Record Updated Successfully');
+	<% else %>
+		toastr.error('Record not updated...');
+	<% end %>
+<% end %>
+onAjaxScroll();

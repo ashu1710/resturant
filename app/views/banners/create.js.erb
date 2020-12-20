@@ -1,0 +1,5 @@
+$('.new_banner').removeClass("hide");
+$('.panel-body').remove();
+$(".table-banner tbody ").prepend("<%= j render(partial: 'banner_data', locals: {banner: @banner}) %>");
+toastr.success('Record Insert Successfully');
+onAjaxScroll();

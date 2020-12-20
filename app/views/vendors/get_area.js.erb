@@ -1,0 +1,9 @@
+<% if @areas.present? %>
+	$('#admin_area_id option').remove();
+	<% @areas.each do |area| %>
+		$('#admin_area_id').append("<option value='<%= area.id %>'><%= area.name %></option");
+	<% end %>
+<% else %>
+	$('#admin_area_id').empty().append("<option value=''>Select City first</option>");
+<% end %>
+onAjaxScroll();

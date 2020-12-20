@@ -1,0 +1,27 @@
+<div class="panel-body">
+    <div class="form">
+        <%= form_for banner,remote: :true,html: { class: 'form-validate form-horizontal' } do |f| %>
+
+            <div class="form-group">
+                <label for="cname" class="control-label col-lg-2">URL</label>
+                <div class="col-lg-10">
+                    <%= f.text_field :product_link_redirect, class: "form-control" %>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="cname" class="control-label col-lg-2">Image</label>
+                <div class="col-lg-10">
+                    <%= f.file_field :banner_image, class: "form-control" %>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-lg-offset-2 col-lg-10">
+                    <%= f.submit (f.object.new_record? ? "Save" : "Update"), class: 'btn btn-primary' %>
+                    <button class="btn btn-default btn-cancel-new-form" type="button">Cancel</button>
+                </div>
+            </div>
+        <% end %>
+    </div>
+</div>

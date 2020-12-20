@@ -1,0 +1,8 @@
+<% if @isdone %>
+	$(".tr_<%= @feedback.id %> .status").html("Seen");
+	$(".tr_<%= @feedback.id %> .btn-success").remove();
+	toastr.success('Feedback seen to user');
+<% else %>
+	toastr.error('Feedback not seen to user');
+<% end %>
+onAjaxScroll();

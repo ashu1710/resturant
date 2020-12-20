@@ -1,0 +1,13 @@
+<tr class="tr_<%= city.id %>">
+    <td><%= city.name %></td>
+    <td>
+        <div class="btn-group">
+            <%= link_to edit_city_path(city), remote: true,class: 'btn btn-primary' do %>
+            	<i class="icon_pencil"></i>
+            <% end %>
+            <%= link_to city_path(city), method: :delete, remote: true, class: 'btn btn-danger' do %>
+            	<i class="icon_close_alt2"></i>
+            <% end %>
+        </div>
+    </td>
+</tr>

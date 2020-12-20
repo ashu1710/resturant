@@ -1,0 +1,9 @@
+$('.new_notification_btn').removeClass("hide");
+$('.panel-body').remove();
+<% if @issaved %>
+	$(".table-notification tbody tr:first").before("<%= j render(partial: 'notification_data', locals: {notification: @notification}) %>");
+	toastr.success('Record Insert Successfully');
+<% else %>
+	toastr.error('Record not created...');
+<% end %>
+onAjaxScroll();

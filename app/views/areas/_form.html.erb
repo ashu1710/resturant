@@ -1,0 +1,25 @@
+<div class="panel-body">
+    <div class="form">
+        <%= form_for area,remote: :true,html: { class: 'form-validate form-horizontal' } do |f| %>
+            <%= f.hidden_field :id %>
+            <div class="form-group">
+                <label for="cname" class="control-label col-lg-2">City Name<span class="required">*</span></label>
+                <div class="col-lg-10">
+                    <%= f.select(:city_id, @cities, {}, { :class => 'form-control', style: 'height: 100%;' }) %>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="cname" class="control-label col-lg-2">Area Name<span class="required">*</span></label>
+                <div class="col-lg-10">
+                    <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control" %>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-offset-2 col-lg-10">
+                    <%= f.submit (f.object.new_record? ? "Save" : "Update"), class: 'btn btn-primary' %>
+                    <button class="btn btn-default btn-cancel-new-form" type="button">Cancel</button>
+                </div>
+            </div>
+        <% end %>
+    </div>
+</div>

@@ -1,0 +1,66 @@
+<%= render 'layouts/user_header' %>
+
+
+<!-- breadcrumb start -->
+<div class="breadcrumb-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="page-title">
+                    <h2>customer's login</h2></div>
+            </div>
+            <div class="col-sm-6">
+                <nav aria-label="breadcrumb" class="theme-breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">Home</li>
+                        <li class="breadcrumb-item active">login</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- breadcrumb End -->
+
+<!--section start-->
+<section class="login-page section-b-space">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <h3>Login</h3>
+                <div class="theme-card login-page-form">
+                    <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'theme-form login-form'}) do |f| %>
+                        <div class="form-group">
+                            <label for="email">Email / Mobile</label>
+                            <%= f.text_field :login,  autofocus: true, class: "required form-control"%>
+                        </div>
+                        <div class="form-group">
+                            <label for="review">Password</label>
+                            <%= f.password_field :password, class: 'required form-control' %>
+                        </div>
+                        <p class="formptag"><%= link_to "Forgot your password?", 'javascript:void(0)', class: 'formatag' %></p>
+                        <%= f.submit "Log in", class: "btn btn-solid" %>
+                    <% end %>
+
+                    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: 'theme-form forget_password_form d-none' }) do |f| %>
+                        <div class="form-group">
+                            <%= f.label :email %><br />
+                            <%= f.email_field :email, autofocus: true, class: 'required form-control', required: true %>
+                        </div>
+                        <%= f.submit "Send me reset password instructions", class: 'btn btn-solid forget-password-btn' %>
+                    <% end %>
+
+                </div>
+            </div>
+            <div class="col-lg-6 right-login">
+                <h3>New Customer</h3>
+                <div class="theme-card authentication-right">
+                    <h6 class="title-font">Create A Account</h6>
+                    <p>Sign up for a free account at our store. Registration is quick and easy. To start shopping click register.</p>
+                    <%= link_to 'Create an Account', new_user_registration_path, class: 'btn btn-solid' %>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<%= render 'layouts/user_footer' %>

@@ -1,0 +1,94 @@
+<section id="container" class="">
+    <%= render 'layouts/admin_header' %>
+    <%= render 'layouts/admin_side_bar' %>
+    <section id="main-content">
+        <section class="wrapper">            
+			<div class="row">
+				<div class="col-lg-12">
+					<h3 class="page-header"><i class="fa fa-laptop"></i>Other Management</h3>
+					<ol class="breadcrumb">
+						<li><i class="fa fa-home"></i><%= link_to "Home", root_path %></li>
+						<li><i class="fa fa-laptop"></i>Other Management</li>						  	
+					</ol>
+				</div>
+			</div>
+              
+            <div class="row">
+				<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                    <%= link_to banners_path do %>
+						<div class="info-box blue-bg">
+							<i class="fa fa-cloud-download"></i>
+							<div class="count"><%= Banner.count %></div>
+							<div class="title">Banner</div>						
+						</div><!--/.info-box-->	
+					<% end %>		
+				</div><!--/.col-->
+				
+
+				<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                    <%= link_to cities_path do %>
+						<div class="info-box blue-bg">
+							<i class="fa fa-cloud-download"></i>
+							<div class="count"><%= City.count %></div>
+							<div class="title">City</div>						
+						</div><!--/.info-box-->	
+					<% end %>		
+				</div><!--/.col-->
+
+
+				<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                    <%= link_to areas_path do %>
+						<div class="info-box blue-bg">
+							<i class="fa fa-cloud-download"></i>
+							<div class="count"><%= Area.count %></div>
+							<div class="title">Area</div>						
+						</div><!--/.info-box-->	
+					<% end %>		
+				</div><!--/.col-->
+
+
+				<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                    <%= link_to admins_categories_path do %>
+						<div class="info-box blue-bg">
+							<i class="fa fa-cloud-download"></i>
+							<div class="count"><%= Category.count %></div>
+							<div class="title">Category</div>						
+						</div><!--/.info-box-->	
+					<% end %>		
+				</div><!--/.col-->
+				
+				<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                    <%= link_to admins_sub_categories_path do %>
+						<div class="info-box blue-bg">
+							<i class="fa fa-cloud-download"></i>
+							<div class="count"><%= Category.count %></div>
+							<div class="title">Sub-Category</div>						
+						</div><!--/.info-box-->	
+					<% end %>		
+				</div><!--/.col-->
+			
+				<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                    <%= link_to colors_path do %>
+						<div class="info-box blue-bg">
+							<i class="fa fa-cloud-download"></i>
+							<div class="count"><%= Color.count %></div>
+							<div class="title">Color</div>						
+						</div><!--/.info-box-->	
+					<% end %>		
+				</div><!--/.col-->
+
+				<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                    <%= link_to sizes_path do %>
+						<div class="info-box blue-bg">
+							<i class="fa fa-cloud-download"></i>
+							<div class="count"><%= Size.count %></div>
+							<div class="title">Size</div>						
+						</div><!--/.info-box-->	
+					<% end %>		
+				</div><!--/.col-->
+
+
+			</div><!--/.row-->
+	    </section>
+	</section>
+</section>

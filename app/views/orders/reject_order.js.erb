@@ -1,0 +1,7 @@
+<% if @isdone %>
+	$(".tr_<%= @order.id %> .status").html("Rejected");
+	toastr.success('Order Rejected Successfully');
+<% else %>
+	toastr.error('Order not rejected');
+<% end %>
+onAjaxScroll();

@@ -1,0 +1,132 @@
+<%= render 'layouts/user_header' %>
+
+<!-- breadcrumb start -->
+<%= hidden_field_tag :sub_category_id, params[:id] %>
+
+<div class="breadcrumb-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="page-title">
+                    <h2>Product Filter</h2></div>
+            </div>
+            <div class="col-sm-6">
+                <nav aria-label="breadcrumb" class="theme-breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">Home</li>
+                        <li class="breadcrumb-item">Category</li>
+                        <li class="breadcrumb-item active" aria-current="page">Product</li>
+                    </ol>
+                </nav>
+            </div>
+
+
+            <div class="col-sm-12 col-md-12">
+                <div class="collection-product-wrapper">
+                    <div class="product-top-filter">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="popup-filter">
+                                    <div class="sidebar-popup"><a class="popup-btn">filter products</a></div>
+                                    <div class="open-popup">
+                                        <div class="collection-filter" style="left: -15px;">
+                                            <!-- side-bar colleps block stat -->
+                                            <div class="collection-filter-block">
+                                                <!-- brand filter start -->
+                                                <div class="collection-mobile-back"><span class="filter-back"><i class="fa fa-angle-left" aria-hidden="true"></i> back</span></div>
+                                                <!-- color filter start here -->
+                                                <div class="collection-collapse-block">
+                                                    <h3 class="collapse-block-title">colors</h3>
+                                                    <div class="collection-collapse-block-content">
+                                                        <div class="color-selector">
+                                                            <ul>
+                                                                <% Color.all.each do |color| %>
+                                                                    <li style="background-color: <%= color.color_code %>" data-value="<%= color.id %>"></li>
+                                                                <% end %>
+                                                            </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="collection-collapse-block open">
+                                                    <h3 class="collapse-block-title">size</h3>
+                                                    <div class="collection-collapse-block-content">
+                                                        <div class="collection-brand-filter">
+                                                            <% Size.all.each do |size| %>
+                                                                <div class="custom-control custom-checkbox collection-filter-checkbox">
+                                                                    <input type="checkbox" class="custom-control-input size_id_checkbox" id="zara_<%= size.id %>" value= <%= size.id %>>
+                                                                    <label class="custom-control-label" for="zara_<%= size.id %>"><%= size.size_no %></label>
+                                                                </div>
+                                                            <% end %>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <!-- silde-bar colleps block end here -->
+                                        </div>
+                                    </div>
+                                    <div class="product-page-filter">
+                                        <%= select_tag 'sort_by_price', options_for_select([["Low to High", "lth"], ['High to Low', "htl"]]), { include_blank: "Sort - Price" ,:class => 'price_sort' } %>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="authentication-page">
+    <div class="container">
+        <section class="search-block">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 offset-lg-3">
+                        <form class="form-header">
+                            <div class="input-group">
+                                <input type="text" class="form-control search_box" aria-label="Amount (to the nearest dollar)" placeholder="Search Products......">
+                                <div class="input-group-append">
+                                    <%= link_to 'javascript:void(0)', remote: true,class: 'btn btn-solid btn_search' do %>
+                                        <i class="fa fa-search"></i>Search
+                                    <% end %>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</section>
+
+<section class="section-b-space ratio_asos">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="no-slider row">
+                    <% @products.each do |product| %>
+                        <div class="product-box">
+                            <div class="img-wrapper">
+                                <div class="front">
+                                    <%= link_to product_details_path(product) do %>
+                                        <%= image_tag product.images.first, class: 'img-fluid blur-up lazyload bg-img' %>
+                                    <% end %>
+                                </div>
+                            </div>
+                            <div class="product-detail">
+                                <div class="rating"></div>
+                                <h6><%= product.name %></h6>
+                                <h4><%= 'Rs. ' + product.price.to_s %></h4>
+                                <ul class="color-variant">
+                                </ul>
+                            </div>
+                        </div>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<%= render 'layouts/user_footer' %>

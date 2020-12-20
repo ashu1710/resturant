@@ -1,0 +1,34 @@
+<%= render 'layouts/user_header' %>
+<section class="contact-page register-page section-b-space">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h3>SHIPPING ADDRESS</h3>
+                <%= form_for(@new_address, html: {class: 'theme-form address_forrm'}) do |f| %>
+                    <%= hidden_field_tag :product_id, @product.try(:id) %>
+                    <%= hidden_field_tag :size_ids, params[:product].present? ? params[:product][:size_ids] : '' %>
+                    <%= hidden_field_tag :color_ids, params[:product].present? ? params[:product][:color_ids] : '' %>
+                    <%= hidden_field_tag :is_cart, params[:is_cart] %>
+                    <div class="form-row">
+                        <div class="col-md-9">
+                            <label for="review">Address</label>
+                            <%= f.text_area :street_1, class: 'form-control mb-0 required', rows: '4' %>
+                        </div>
+                        <div class="col-md-6 select_input">
+                            <label for="review">City Name*</label>
+                            <%= f.text_field :city_name, class: 'form-control mb-0 required' %>
+                        </div>
+                        <div class="col-md-6 select_input">
+                            <label for="review">Area Name *</label>
+                            <%= f.text_field :area_name, class: 'form-control mb-0 required' %>
+                        </div>
+                        <div class="col-md-12">
+                            <%= f.submit 'Buy', class: "btn btn-sm btn-solid address_btn" %>
+                        </div>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</section>
+<%= render 'layouts/user_footer' %>

@@ -1,0 +1,59 @@
+<div class="panel-body">
+    <div class="form">
+        <% if params["action"] == "edit" %>
+            <% redirect_url = vendor_path %>
+        <% else %>
+            <% redirect_url = vendors_path %>
+        <% end %>
+        <%= form_for @vendor,url: redirect_url,html: { class: 'form-validate form-horizontal' }, remote: true do |f| %>
+            <div class="form-group">
+                <label for="cname" class="control-label col-lg-2">Email<span class="required">*</span></label>
+                <div class="col-lg-10">
+                    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "Email" %>
+                </div>
+            </div>
+
+            <div class="form-group ">
+                <label for="cname" class="control-label col-lg-2">Mobile Number<span class="required">*</span></label>
+                <div class="col-lg-10">
+                    <%= f.number_field :mobile, class: "form-control", placeholder: "Mobile Number" %>
+                </div>
+            </div>
+
+
+            <div class="form-group ">
+                <label for="cname" class="control-label col-lg-2">Address<span class="required">*</span></label>
+                <div class="col-lg-10">
+                    <%= f.text_area :address, class: "form-control", placeholder: "Address" %>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="cname" class="control-label col-lg-2">City Name<span class="required">*</span></label>
+                <div class="col-lg-4">
+                    <%= f.select(:city_id, @cities, {}, { :class => 'form-control', style: 'height: 100%;' }) %>
+                </div>
+
+                <label for="cname" class="control-label col-lg-2">Area Name</label>
+                <div class="col-lg-4">
+                    <%= f.select(:area_id, (@area.present? ? @area : [["Select City first", ""]]), {}, { :class => 'form-control', style: 'height: 100%;' }) %>
+                </div>
+            </div>
+
+
+
+            <div class="form-group ">
+                <label for="cname" class="control-label col-lg-2">password<span class="required">*</span></label>
+                <div class="col-lg-10">
+                    <%= f.password_field :password, class: "form-control", placeholder: "Password" %>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-offset-2 col-lg-10">
+                    <%= f.submit "Save", class: 'btn btn-primary' %>
+                    <button class="btn btn-default btn-cancel-new-form" type="button">Cancel</button>
+                </div>
+            </div>
+        <% end %>
+    </div>
+</div>

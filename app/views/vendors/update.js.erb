@@ -1,0 +1,9 @@
+$('.new_vendor_btn').removeClass("hide");
+$('.panel-body').remove();
+<% if @is_updated %>
+	$(".tr_<%= @vendor.id %>").replaceWith("<%= j render(partial: 'vendor_data', locals: {vendor: @vendor}) %>");
+	toastr.success('Record Updated Successfully');
+<% else %>
+	toastr.error('Record not updated...');
+<% end %>
+onAjaxScroll();

@@ -1,0 +1,9 @@
+$(".cart_<%= @cart.id %>").remove();
+var price = "<%= @cart.product.price * @cart.qty %>";
+var grandTot = $('.grand_tot').text() - price
+$('.grand_tot').html(grandTot);
+toastr.success("Removed successfully.");
+<% unless current_user.carts.present? %>
+	$('.chekout_td').addClass("disabled");
+<% end %>
+

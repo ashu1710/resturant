@@ -1,0 +1,816 @@
+    1  sudo mysql
+    2  sudo mysq
+    3  sudo mysql
+    4  sudo install mysql
+    5  sudo get-apt install mysql
+    6  sudo apt update
+    7  sudo apt install mysql-server
+    8  rvm list
+    9  rails -version
+   10  sudo apt install ruby-railties
+   11  sudo apt-get update
+   12  mysql
+   13  sudo apt install mysql-server
+   14  mysql
+   15  sudo mysql_secure_installation
+   16  mysql
+   17  sudo mysqll
+   18  sudo mysql
+   19  sudo mysql -u root
+   20  sudo mysql -u root -p root
+   21  sudo mysql  -p root
+   22  sudo install ruby
+   23  sudo apt install ruby-full
+   24  sudo apt-get update
+   25  sudo apt install ruby-full
+   26  gem
+   27  gem install rails -v 2.5.0
+   28  [A
+   29  gem install rails -v 2.5.1
+   30  gem install rails -v 5.0.1
+   31  sudo gem install rails -v 5.0.1
+   32  sudo gem install rails -v 5.2.6
+   33  sudo gem install rails -v 5.2.3
+   34  mkmf.log
+   35  cat /var/lib/gems/2.5.0/extensions/x86_64-linux/2.5.0/nokogiri-1.10.5/gem_make.out
+   36  rvm list
+   37  rvm remove 2.6.0
+   38  rvm install 2.6.0
+   39  ruby -v
+   40  sudo apt install gnupg2
+   41  cd /tmp
+   42  curl -sSL https://get.rvm.io -o rvm.sh
+   43  sudo apt install curl
+   44  curl -sSL https://get.rvm.io -o rvm.sh
+   45  less /tmp/rvm.sh
+   46  cat /tmp/rvm.sh | bash -s stable --railsc
+   47  rvm list
+   48  rvm
+   49  rvm list known
+   50  cd ..
+   51  rvm list known
+   52  source /home/sammy/.rvm/scripts/rvm
+   53  cd tmp/
+   54  source /home/sammy/.rvm/scripts/rvm
+   55  cd ..
+   56  cd /home/ashish/
+   57  source /home/sammy/.rvm/scripts/rvm
+   58  source /home/ashish/.rvm/scripts/rvm
+   59  rvm list known
+   60  rvm install 2.5.0
+   61  rvm list
+   62  gem install rails -v 5.2.3
+   63  rvm list
+   64  ruby -v
+   65  gem install rails
+   66  gem install rails -v 2.5.3
+   67  gem install rails -v 5.2.3
+   68  gem install rails -v 5.6.0
+   69  4
+   70  '
+   71  mysql
+   72  sudo apt install mysql-client-core-5.7  
+   73  sudo apt install mariadb-client-core-10.1
+   74  gem install rails -v 2.6.0
+   75  gem install rails -v 5.6.0
+   76  gem install rails -v 5.2.3
+   77  rails --version
+   78  rvm use 2.5.1
+   79  rvm list
+   80  rvm use 2.5.0
+   81  rails new weather_api -d mysql
+   82  `gem install mysql2 -v '0.5.2'
+   83  gem install mysql2 -v '0.5.2' --source 'https://rubygems.org/'
+   84  sudo apt-get install libmysqlclient-dev
+   85  rails new weather_api -d mysql
+   86  cd weather_api/
+   87  subl .
+   88  bundle install
+   89  rails g controller weatherdetails
+   90  rails generate controller weatherdetails
+   91  sudo apt install gooel-chrome-stable
+   92  sudo apt install google-chrome-stable
+   93  sudo apt install google-chrome
+   94  sudo apt update
+   95  sudo apt install google-chrome-stable
+   96  bundle install
+   97  rails s
+   98  cd /etc/
+   99  sudo nano resolv.conf 
+  100  sudo service manager-network restart
+  101  sudo service network-manager restart
+  102  cd ..
+  103  cd
+  104  cd weather_api/
+  105  bundle update
+  106  rails s
+  107  bundle update
+  108  rails s
+  109  sudo yum install nodejs
+  110  yum install nodejs
+  111  sudo apt install yum
+  112  sudo yum install nodejs
+  113  yum repolist all
+  114  sudo yum install nodejs
+  115  sudo apt install yum-utils
+  116  rails s
+  117  yum repolist all
+  118  sudo yum install nodejs
+  119  yum-config-manager --enable
+  120  sudo yum-config-manager --enable
+  121  yum repolist all
+  122  sudo yum-config-manager --enable 0
+  123  sudo yum install nodejs
+  124  yum-config-manager --enable <repo>
+  125  yum-config-manager --enable repolist: 0
+  126  sudo yum-config-manager --enable repolist: 0
+  127  sudo yum install nodejs
+  128  sudo apt-get install libv8-dev
+  129  rails s
+  130  rvm list
+  131  rvm use 2.5.1
+  132  rvm use 2.5.0
+  133  rails s
+  134  rails -v
+  135  gem install rails -v 2.6.0
+  136  gem install rails -v 5.6.0
+  137  cd ..
+  138  rails new weather_api_demo
+  139  rm -rv weather_api_demo/
+  140  rm -rv weather_api/
+  141  rails new weather_api -d mysql
+  142  rm -rv weather_api/
+  143  rails new weather_api -d mysql
+  144  rm -rv weather_api/
+  145  rails new weather_api -d mysql
+  146  sudo apt install ruby-railties
+  147  rails new 
+  148  rails new weather_api -d mysql
+  149  rails new weather_api
+  150  rails new weather_api_1
+  151  bundler
+  152  sudo apt install ruby-bundler
+  153  bundler
+  154  bundler -v
+  155  SetEnv GEM_HOME /usr/lib/ruby/gems/1.8
+  156  gem install bundler
+  157  sudo gem install bundler
+  158  cd Desktop/
+  159  mkdir rails_project
+  160  cd rails_project/
+  161  rails new abc
+  162  rails new weather_app -d mysql
+  163  bundle install
+  164  Could not locate Gemfile
+  165  cd weather_app/
+  166  bundle install
+  167  gem install bundler
+  168  sudo gem install bundler
+  169  sudo gem install bundler -v 1.9.0
+  170  bundle install
+  171  cd ..
+  172  rails new weather_api_demo -d mysql
+  173  cd weather_api_demo/
+  174  bundle install
+  175  bundler (1.16.1)
+  176  bundler (1.9.0)
+  177  gem update --system
+  178  sudo gem update --system
+  179  bundle install
+  180  gem update --systemgem update --systemgem update --systemruby -v
+  181  ruby -v
+  182  rails -v    
+  183  rails --version
+  184  bundle install
+  185  sudo gem install bundler -v 1.1.3
+  186  cd ..
+  187  ls
+  188  rails new weather_api -d mysql
+  189  cd weather_api/
+  190  bundle install
+  191  gem uninstall bundler
+  192  sudo gem uninstall bundler
+  193  sudo gem install bundler -v 1.1.3
+  194  bundle install
+  195  rails s
+  196  sudo apt-get install nodejs
+  197  yum -y install nodejs
+  198  sudo yum -y install nodejs
+  199  lsscsi
+  200  rhel-7-node:/etc/yum.repos.d
+  201  cat /etc/redhat-release
+  202  yum clean all
+  203  vi /etc/yum.repos.d/RHEL_7_Disc.repo
+  204  cat /etc/yum.repos.d/RHEL_7_Disc.repo
+  205  vi /etc/yum.repos.d/RHEL_7_Disc.repo
+  206  rails s
+  207  subl .
+  208  rails s
+  209  rake db:create
+  210  rails db:create
+  211  rake db:create
+  212  mysql -u root
+  213  mysql -u root -p
+  214  mysqld-nt
+  215  mysqk
+  216  mysql
+  217  mysql -u ashish
+  218  mysql -u ashu
+  219  mysql -u ashish -p
+  220  su -
+  221  su
+  222  sudo ERROR 1045 (28000)
+  223  sudo mysql -u root -p
+  224  rake db:create
+  225  rails s
+  226  rails g controller  weatherdetails
+  227  bundle install
+  228  rails s
+  229  bundle install
+  230  rails s
+  231  cd Desktop/rails_project/
+  232  cd weather_api/
+  233  rails s
+  234  rvm use 2.5.3
+  235  rvm list
+  236  rvm use 2.5.0
+  237  subl .
+  238  mkdir rails_pro
+  239  cd rails_pro/
+  240  rvm use 2.5.3
+  241  rvm list
+  242  rmv use 2.5.0
+  243  rvm use 2.5.0
+  244  rails new new_app -d postgresql
+  245  cd rails_pro/new_app/
+  246  subl .
+  247  rails g controller dashboard
+  248  rails s
+  249  rake db:migrate
+  250  rake db:create
+  251  rails s
+  252  budle install
+  253  bundle install
+  254  rails s
+  255  bundle install
+  256  rails s
+  257  cd rails_pro/
+  258  ls
+  259  cd vivaah/
+  260  ls
+  261  subl .
+  262  rails s
+  263  rails g controller admin/users
+  264  rails g controller admin/category
+  265  rails d controller admin/category
+  266  rails g controller admin/categoies
+  267  rails g controller admin/sub_categoies
+  268  rails g controller admin/products
+  269  rails d controller admin/bookings
+  270  rails d controller admin/products
+  271  rails d controller admin/sub_categoies
+  272  rails d controller admin/categoies
+  273  rails d controller admin/users
+  274  rails g controller users
+  275  rails g controller admin/categories
+  276  rails g controller admin/sub_categories
+  277  rails g controller admin/products
+  278  rails g controller admin/bookings
+  279  rails d controller admin/products
+  280  rails d controller admin/bookings
+  281  rails g controller bookings
+  282  rails g controller products
+  283  rails g controller orders
+  284  rails g controller feedbacks
+  285  rails g controller notification
+  286  rails g model user email:string phone:string user_type:integer dob:date
+  287  rails g model category name:string
+  288  rails g model sub_category name:string references:user
+  289  rails d model sub_category name:string references:user
+  290  rails g model sub_category name:string user:references
+  291  rails g model sub_category name:string category:references
+  292  rails d model sub_category name:string category:references
+  293  rails g model sub_category name:string category:references
+  294  rails g model product name:string price:integer user:references category:references sub_category:references
+  295  rails g model booking booking_date:date time_from:time time_to:time is_confirm:integer user:references product:references
+  296  rails g model order order_date:date order_receive_date:date is_confirm:integer user:references product:references
+  297  rails g model feedback msg:long references:user
+  298  rails g model notification msg:string
+  299  rails db:create
+  300  rails db:mifrate
+  301  rails db:migrate
+  302  rails d model feedback msg:long references:user
+  303  rails g model feedback msg:string references:user
+  304  rails db:migra6e
+  305  rails db:migrate
+  306  rails d model feedback msg:long references:user
+  307  rake db:migrate
+  308  rails g model feedback msg:string references:user
+  309  rails db:migrate
+  310  rails g model feedback msg:string references:users
+  311  rails db:migrate
+  312  rails d model feedback msg:string references:users
+  313  rails g model feedback name:string category:references
+  314  rails d model feedback name:string category:references
+  315  rails g model feedback msg:string user:references
+  316  rails db:migrate
+  317  rake routes
+  318  rails s
+  319  rails generate devise Admin
+  320  rails g devise Admin
+  321  rails generate devise admin
+  322  bundle install
+  323  rails generate devise admin
+  324  rails g devise:views admins
+  325  rake db:migrate
+  326  rails g controller admins
+  327  bundle update
+  328  rake db:migrate
+  329  bundle install
+  330  rails generate devise admin
+  331  rails g devise:views admins
+  332  bundle install
+  333  rake db:rollback
+  334  rails s
+  335  bundle install
+  336  rails g devise:views
+  337  rails d devise:views
+  338  rails generate devise admin
+  339  rake db:migrate
+  340  rails d devise:views admins
+  341  rails g devise:views admins
+  342  rails g devise:controller admins
+  343  rails g devise:controllers admins
+  344  rake routes
+  345  rails s
+  346  rails d devise:views admins
+  347  rails d devise:controllers admins
+  348  rake db:rollback
+  349  rails d devise:views admin
+  350  rails g devise:views admin
+  351  rails g devise:controllers admin
+  352  rails generate devise admin
+  353  rake db:migrate
+  354  rails s
+  355  rails g devise:views admin
+  356  rails g devise:controllers admins
+  357  rails d devise:controllers admin
+  358  rails s
+  359  bundle install
+  360  rails s
+  361  bundle install
+  362  rails generate jquery:datatables:install
+  363  rails s
+  364  bundle uodate
+  365  bundle update
+  366  rails s
+  367  rails g jquery:datatables:install bootstrap4
+  368  bundle install
+  369  rails g jquery:datatables:install bootstrap4
+  370  rails s
+  371  bundle install
+  372  rails s
+  373  cat /home/ashish/rails_pro/vivaah/tmp/pids/server.pid
+  374  kill -9 30992
+  375  rails s
+  376  rails generate devise user
+  377  rake db:migrate
+  378  rails d devise:controllers users
+  379  rails g devise:controllers users
+  380  rails g devise:views users
+  381  rake routes
+  382  rails s
+  383  rails g migration addColumnToUser
+  384  rake db:migaret
+  385  rake db:migrate
+  386  rails s
+  387  rails routes
+  388  rvm use 2.5.0
+  389  rails routes
+  390  ls
+  391  rails c
+  392  subl .
+  393  rake routes
+  394  rvm use 2.5.0
+  395  rake routes
+  396  echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
+  397  rake routes
+  398  r
+  399  cd rails_pro/vivaah
+  400  subl .
+  401  rvm use 2.5.0
+  402  rails s
+  403  rails g migration adddColumnToBooking
+  404  rake db:migrate
+  405  rails s
+  406  git init
+  407  git status
+  408  git commit -m "First commit"
+  409  git log
+  410  git commit -amend
+  411  git commit --amend
+  412  git remote add origin https://github.com/ashu1710/master.git
+  413  git remote -v
+  414  git push origin master
+  415  rvm use 2.5.0
+  416  rails c
+  417  rvm use 2.5.0
+  418  rails g migartion changeColumnDataTypeInBooking
+  419  rails g migration changeColumnDataTypeInBooking
+  420  rake db:migrate
+  421  rake db:rollback
+  422  rake db:migrate
+  423  rake db:rollback
+  424  rake db:drop
+  425  rake db:migrate
+  426  rails g migration chnageColumnType
+  427  rake db:migrate
+  428  rake routes
+  429  rails g migration AddColumnToOrder
+  430  rake db:migrate
+  431  rails g migration AddColumnToFeedback
+  432  rake db:migrate
+  433  rails d controller notification
+  434  rails g controller notifications
+  435  subl .
+  436  rvm use 2.5.0
+  437  rails routes
+  438  rake routes
+  439  rails g migration addColumnToAdmin admin_type:string
+  440  rails g migration addColumnToAdminTypeAdmin admin_type:string
+  441  rake db:migrate
+  442  rake db:rollback
+  443  rake db:migrate
+  444  rake db:rollback
+  445  rake db:migrate
+  446  rake routes
+  447  rvm use 2.5.0
+  448  rake routes
+  449  rails c
+  450  rails sc
+  451  rails c
+  452  cd rails_pro/vivaah/
+  453  rvm use 2.5.0
+  454  rails s
+  455  rails g migration addColumnToAdmin mobile:string
+  456  rake db:migrate
+  457  rails s
+  458  bundle install
+  459  rails s
+  460  rails g migration addColumntoSubCategory category_type:string
+  461  rake db:migrate
+  462  rake db:rollback
+  463  rake db:migrate
+  464  rails s
+  465  rake db:rollback
+  466  rake db:migrate
+  467  rails c
+  468  rails s
+  469  rails g controller vendors
+  470  rails s
+  471  rails g migration removeForeignkeyFromProdct
+  472  rake db:migrate
+  473  rails s
+  474  rails g migration removeColumnFromBookingOrder
+  475  rake db:migrate
+  476  rails s
+  477  rake db:drop
+  478  rake destroySession:kill_postgres_connections
+  479  rake destroy_session:kill_postgres_connections
+  480  rake destroySession:kill_postgres_connections
+  481  rake destroy_session:kill_postgres_connections
+  482  rake db:drop
+  483  A
+  484  ps -ef | grep postgres
+  485  kill -9 5710
+  486  sudo kill -9 5710
+  487  sudo kill -9 14279
+  488  sudo kill -9 14348
+  489  ps -ef | grep postgres
+  490  rake db:drop
+  491  rake db:migrate
+  492  rake db:create
+  493  rake db:migrate
+  494  rails s
+  495  git status
+  496  gitg
+  497  sudo apt install gitg
+  498  gitg
+  499  git status
+  500  git add .
+  501  git status
+  502  git commit -m "Add Validation - only user management remain"
+  503  git push origin master 
+  504  git log
+  505  rvm use 2.5.0
+  506  rails c
+  507  subl .
+  508  rvm use 2.5.0
+  509  rake db:rollback
+  510  rails g migration addRemoveColumn
+  511  rake db:migrate
+  512  rake routes
+  513  clear
+  514  rake routes
+  515  clear
+  516  rake routes
+  517  cd rails_pro/vivaah/
+  518  rvm use 2.5.0
+  519  rails s
+  520  gitg
+  521  rails c
+  522  rvm use 2.5.0
+  523  rails c
+  524  cd rails_pro/vivaah/
+  525  git status
+  526  git add .
+  527  git stattus
+  528  git status
+  529  git commit -m 'complete validation and login using mobile and password..only city and area remain'
+  530  git push origin master 
+  531  git log
+  532  git push origin master 
+  533  subl .
+  534  rails s
+  535  rails g controller city
+  536  rails d controller city
+  537  rails g controller cities
+  538  rails g controller areas
+  539  rails g model city name:string
+  540  rails g model area name:string city_id:references
+  541  rake db:migrate
+  542  rails d model area name:string city_id:references
+  543  rake db:rollback
+  544  rails g model area name:string city:references
+  545  rake db:migrate
+  546  rake routes
+  547  rails s
+  548  git status
+  549  git add .
+  550  git status
+  551  git commit -m "Admin complete with validation and city and area - vendor"
+  552  git push origin master
+  553  git log
+  554  rvm use 2.5.0
+  555  rails g migration addReferenceToAdmin
+  556  rails db:migrate
+  557  rails g migration addColumnAddressToAdmin address:text
+  558  rake db:migrate
+  559  cd rails_pro/vivaah/
+  560  rvm use 2.5.0
+  561  rails s
+  562  rvm use 2.5.0
+  563  rails c
+  564  cd
+  565  cd Downloads/
+  566  ls
+  567  unzip ngrok-stable-linux-amd64.zip 
+  568  ./ngrok authtoken 1V4Sy48ZBmMKCZqRTqxHq0pSYut_3GLg7Rnw7S3WPF4JY11Kf
+  569  ./grok http 3000
+  570  ./ngrok http 3000
+  571  rvm use 2.5.0
+  572  rake routes
+  573  rvm use 2.5.0
+  574  rails c
+  575  cd rails_pro/vivaah/
+  576  rvm use 2.5.0
+  577  rails s
+  578  rails g migration addColumnToVendor
+  579  rake db:migrate
+  580  rails s
+  581  git status
+  582  gitg
+  583  git status
+  584  git commit -m "Add vendor appruval and category image"
+  585  git log
+  586  git status
+  587  git push origin master
+  588  rails s
+  589  bundle install
+  590  rails s
+  591  bundle install
+  592  rails generate ckeditor:install
+  593  rake db:migrate
+  594  rails s
+  595  bundle update ckeditor
+  596  rails s
+  597  rails d ckeditor:install
+  598  rails g ckeditor:install
+  599  rake db:rollback
+  600  rake db:drop
+  601  rails d ckeditor:install
+  602  rails d db:create
+  603  rails db:create
+  604  rake db:migrate
+  605  rails s
+  606  rails g migration addColumnfirstProductToProduct
+  607  rake db:migrate
+  608  rails s
+  609  rake db:migrate
+  610  rails s
+  611  rake db:rollbacl
+  612  rake db:rollback
+  613  rails g migration addColumntoProducts
+  614  rake db:migrate
+  615  rails s
+  616  rvm use 2.5.0
+  617  gem "ckeditor"
+  618  bundle install
+  619  gem install ckeditor -v 4.3.0
+  620  rails generate ckeditor:install --orm=active_record --backend=active_storage
+  621  rails s
+  622  cd rails_pro/vivaah/
+  623  rails s
+  624  rvm use 2.5.0
+  625  rails c
+  626  git status
+  627  git add .
+  628  git commit -m 'with ckeditor and product approval'
+  629  git push origin master 
+  630  cd .
+  631  cd
+  632  cd Downloads/
+  633  ./ngrok http 3000
+  634  cd rails_pro/vivaah/
+  635  rvm use 2.5.0
+  636  rails s
+  637  cat /home/ashish/rails_pro/vivaah/tmp/pids/server.pid
+  638  kill -9 8199
+  639  rails s
+  640  git status
+  641  git add .
+  642  git commit -m 'solve responsive issue and dropdown issue'
+  643  git push origin master
+  644  rvm use 2.5.0
+  645  rails sc
+  646  rails c
+  647  subl .
+  648  cd
+  649  cd Downloads/
+  650  ./ngrok http 3000
+  651  cd rails_pro/vivaah/
+  652  git status
+  653  git push origin master 
+  654  cd rails_pro/vivaah/
+  655  git status
+  656  git checkout .
+  657  git pull origin master
+  658  git checkout master
+  659  git pull origin master
+  660  rails s
+  661  git status
+  662  git checkout
+  663  git status
+  664  gitg
+  665  git status
+  666  gitg
+  667  rails s
+  668  git status
+  669  git checkout app/assets/stylesheets/application.scss
+  670  rails s
+  671  cd ..
+  672  mkdir vivaah2
+  673  cd vivaah2/
+  674  ls
+  675  git status
+  676  git init
+  677  git status
+  678  git pull origin master
+  679  git clone https://github.com/ashu1710/master.git
+  680  git status
+  681  ls
+  682  cd master/
+  683  ls
+  684  rake db:create
+  685  rake db:migrate
+  686  rails s
+  687  bundle install
+  688  rails s
+  689  bundle install
+  690  rails s
+  691  rvm use 2.5.0
+  692  subl .
+  693  gitg
+  694  cd rails_pro/vivaah2/master/
+  695  rvm use 2.5.0
+  696  rails s
+  697  subl .
+  698  cd rails_pro/
+  699  ls
+  700  cd vivaah
+  701  rails s
+  702  cd ..
+  703  cd vivaah2/
+  704  rails s
+  705  ls
+  706  cd master/
+  707  rails s
+  708  rails g device:views
+  709  rails g devise:views
+  710  rails s
+  711  rails g devise:controler
+  712  rails g devise:controller
+  713  rails g devise:controllers
+  714  rails generate devise:controllers
+  715  rails s
+  716  bundle install
+  717  rails s
+  718  git status
+  719  git add .
+  720  git status
+  721  git commit -m "User side - Login - Product view  - Date time pair - product details"
+  722  git push origin master 
+  723  rake routes
+  724  rvm use 2.5.0
+  725  rake routes
+  726  d
+  727  rails c
+  728  rake routes
+  729  rails c
+  730  cd rails_pro/vivaah2/master/
+  731  rails s
+  732  rvm use 2.5.0
+  733  rails c
+  734  cd rails_pro/vivaah2/master/
+  735  rails s
+  736  gitg
+  737  git status
+  738  git add .
+  739  git status
+  740  git commit -m "user side vendor booking complete"
+  741  git push origin master
+  742  rails s
+  743  rvm use 2.5.0
+  744  rails c
+  745  git status
+  746  git add .
+  747  git commit -m "Scrollbar issue only admin sidebar remain"
+  748  git push origin master
+  749  subl .
+  750  rake routes
+  751  rvm use 2.5.0
+  752  rake routes
+  753  sudo snap install postman
+  754  wget https://download.teamviewer.com/download/linux/teamviewer_amd64.deb
+  755  sudo apt install ./teamviewer_amd64.deb
+  756  ls
+  757  sudo apt install ./teamviewer_amd64.deb 
+  758  cd Documents/
+  759  ls
+  760  sudo apt install ./teamviewer_amd64.deb 
+  761  wget https://download.teamviewer.com/download/linux/signature/TeamViewer2017.asc
+  762  sudo sh -c 'echo "deb http://linux.teamviewer.com/deb stable main" >> /etc/apt/sources.list.d/teamviewer.list'
+  763  sudo apt update
+  764  teamviewer
+  765  cd rails_pro/vivaah2/master/
+  766  git status
+  767  cd rails_pro/vivaah2/master/
+  768  rails s
+  769  gitg
+  770  git status
+  771  rails s
+  772  git commit -m "Admin sidebar scrollbar done"
+  773  git push origin master
+  774  rails s
+  775  gitg
+  776  git status
+  777  git add .
+  778  git commit -m "Solve all scrollbar issue at admin site"
+  779  git push origin master
+  780  ashishsheladiya1997@gmail.com
+  781  git push origin master
+  782  cd 
+  783  cd Downloads/
+  784  ./ngrok http 3000
+  785  gitg
+  786  cd rails_pro/vivaah2/master/
+  787  rails s
+  788  rails g model banner 
+  789  rake db:migrate
+  790  rails g controller banners
+  791  rails s
+  792  git status
+  793  git add .
+  794  git status
+  795  git commit -m "Add banner at admin side"
+  796  git push origin master 
+  797  cd rails_pro/vivaah2/master/
+  798  ssh -p 65002 u712467654@194.59.164.106
+  799  cd rails_pro/vivaah2/master/
+  800  ssh -p 65002 u712467654@194.59.164.106
+  801  sudo apt-get update && sudo apt-get -y upgrade
+  802  sudo apt-get update
+  803  ssh -p 65002 u712467654@194.59.164.106
+  804  cd rails_pro/vivaah2/master/
+  805  ssh -p 65002 u712467654@194.59.164.106
+  806  cd rails_pro/vivaah2/master/
+  807  rails s
+  808  git config credential.helper store
+  809  git push origin master
+  810  git help credentials
+  811  ssh -p 65002 u712467654@194.59.164.106
+  812  subl .
+  813  rvm use 2.5.0
+  814  history
+  815  history << abc.txt
+  816  history >> abc.txt

@@ -1,0 +1,12 @@
+<% if @product.present? %>
+	<% if !current_admin.is_admin? && @product.is_first_product %>
+		$('.new_product_btn').addClass("hide");
+	<% else %>
+		$('.new_product_btn').removeClass("hide");
+	<% end %>
+	toastr.success('product approved Successfully');
+	$(".tr_<%= @product.id %> .product_approve").html("Approved");
+<% else %>
+	toastr.error('Record Insert Successfully');
+<% end %>
+onAjaxScroll();

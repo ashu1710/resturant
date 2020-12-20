@@ -1,0 +1,82 @@
+<%= render 'layouts/user_header' %>
+<!-- thank-you section start -->
+<section class="section-b-space light-layout">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="success-text"><i class="fa fa-check-circle" aria-hidden="true"></i>
+                    <h2>thank you</h2>
+                    <p>Your order received and Track order from your profile.</p>
+                    <p>Transaction ID: <%= @order.id %></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Section ends -->
+
+
+<!-- order-detail section start -->
+<section class="section-b-space">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="product-order">
+                    <h3>your order details</h3>
+                    <% @order_list.each do |order| %>
+                        <div class="row product-order-detail">
+                            <div class="col-2">
+                                <%= image_tag order.product.images.first, class: "img-fluid blur-up lazyload"  %>
+                                <img src="#" alt="" class="img-fluid blur-up lazyload"></div>
+                            <div class="col-2 order_detail">
+                                <div>
+                                    <h4>product name</h4>
+                                    <h5><%= order.product.name %></h5>
+                                </div>
+                            </div>
+                            <div class="col-2 order_detail">
+                                <div>
+                                    <h4>Qty</h4>
+                                    <h5><%= order.qty %></h5>
+                                </div>
+                            </div>
+                            <div class="col-2 order_detail">
+                                <div>
+                                    <h4>size</h4>
+                                    <h5><%= order.size.size_no %></h5></div>
+                            </div>
+
+                            <div class="col-2 order_detail">
+                                <div>
+                                    <h4>Color</h4>
+                                    <h5 style="background-color: <%= order.color.color_code %>;height: 10px; width: 50px;"></h5></div>
+                            </div>
+                            <div class="col-2 order_detail">
+                                <div>
+                                    <h4>price</h4>
+                                    <h5><%= "Rs. #{order.product.price}" %></h5></div>
+                            </div>
+                        </div>
+                    <% end %>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="row order-success-sec">
+                    <div class="col-sm-12 payment-mode">
+                        <h4>Estimated Order Received Date</h4>
+                        <p><%= @order.order_receive_date %></p>
+                        <br><br>
+                        <h4>payment method</h4>
+                        <p>Cash on delivery (COD)</p>
+                        <br><br>
+                        <h4>Order Status</h4>
+                        <p><%= @order.is_confirmed.present? ? 'Confirmed' : 'Pending' %></p>
+                    </div>
+                    <div class="col-md-12"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Section ends -->
+<%= render 'layouts/user_footer' %>

@@ -1,0 +1,7 @@
+$('.new_banner').addClass("hide");
+$(".new_banner").after("<%= j render(partial: 'form', locals: {color: @color}) %>");
+$(".btn-cancel-new-form").on('click', function(e){
+	$('.new_banner').removeClass("hide");
+	$('.panel-body').remove();
+});
+onAjaxScroll();

@@ -1,0 +1,19 @@
+<div class="panel-body">
+    <div class="form">
+        <%= form_for size,remote: :true,html: { class: 'form-validate form-horizontal' } do |f| %>
+            <div class="form-group">
+                <label for="cname" class="control-label col-lg-2">Size</label>
+                <div class="col-lg-10">
+                    <%= f.text_field :size_no, class: "form-control required" %>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-lg-offset-2 col-lg-10">
+                    <%= f.submit "Save", class: 'btn btn-primary' %>
+                    <button class="btn btn-default btn-cancel-new-form" type="button">Cancel</button>
+                </div>
+            </div>
+        <% end %>
+    </div>
+</div>

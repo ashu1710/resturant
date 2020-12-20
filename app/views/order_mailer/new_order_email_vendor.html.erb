@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p>You got a new order from <%= @order.user.email %>!</p>
+    <p>
+    User details<br>
+    --------------------------
+    </p>
+    <p>Email: <%= @order.user.email %></p>
+    <p>Phone: <%= @order.user.mobile %></p>
+    <p>
+    Product Details:<br>
+    ----------
+    </p>
+    <table>
+      <thead>
+        <tr>
+          <th>Product name</th>
+          <th>Product Price</th>
+        </tr>
+        <tr>
+          <td><%= @order.product.name %></td>
+          <td><%= @order.product.price %></td>
+        </tr>
+      </thead>
+    </table>
+  </body>
+</html>

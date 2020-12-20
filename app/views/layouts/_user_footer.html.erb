@@ -1,0 +1,84 @@
+<footer class="footer-light">
+    <section class="section-b-space light-layout">
+        <div class="container">
+            <div class="row footer-theme partition-f">
+                <div class="col-lg-4 col-md-6">
+                    <div class="footer-title footer-mobile-title">
+                        <h4>About</h4>
+                    </div>
+                    <div class="footer-contant">
+                        <div class="footer-logo"><%= image_tag "users/icon/logo.png", style: 'width: 65px;height: 65px' %></div>
+                        <p>We proudly say “Ladke waale ho ya Ladki waale if you are going to get married/engaged you must once visit Shaadiwaale.” Planning your dream wedding is exciting.</p>
+                        <div class="footer-social">
+                            <ul>
+                                <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fa fa-play" aria-hidden="true"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col offset-xl-1">
+                    <div class="sub-title">
+                        <div class="footer-title">
+                            <h4>my account</h4>
+                        </div>
+                        <div class="footer-contant">
+                            <ul>
+                                <li><%= link_to "Home", root_path %></li>
+                                <li><%= link_to "About Us", about_us_path %></li>
+                                <li><%= link_to "Have Us Call you", contact_us_path %></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="sub-title">
+                        <div class="footer-title">
+                            <h4>My Activity</h4>
+                        </div>
+                        <div class="footer-contant">
+                            <ul>
+                                <li><%= link_to 'My Account', my_account_path %></li>
+                                <li><%= link_to "Shopping", sub_category_list_path(3) %></li>
+                                <% if current_user.present? %>
+                                    <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
+                                <% else %>
+                                    <li><%= link_to 'LogIn / Register', new_user_session_path %></li>
+                                <% end %>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="sub-title">
+                        <div class="footer-title">
+                            <h4>store information</h4>
+                        </div>
+                        <div class="footer-contant">
+                            <ul class="contact-list">
+                                <li><i class="fa fa-phone"></i><a href="tel:+123456789">123456789</a></li>
+                                <li><i class="fa fa-envelope-o"></i><a href="mailto:support@shaadiwaale.com">support@shaadiwaale.com</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="sub-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-6 col-md-6 col-sm-12">
+                    <div class="footer-end">
+                        <p><i class="fa fa-copyright" aria-hidden="true"></i> 2019-20 Shaadiwaale</p>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-md-6 col-sm-12"></div>
+            </div>
+        </div>
+    </div>
+</footer>

@@ -1,0 +1,13 @@
+<% if @find_area.present? %>
+	toastr.error('Record already present!!!');
+<% else %>
+	$('.new_area_btn').removeClass("hide");
+	$('.panel-body').remove();
+	<% if @issaved %>
+		$(".table-area tbody tr:first").before("<%= j render(partial: 'areas_data', locals: {area: @area}) %>");
+		toastr.success('Record Insert Successfully');
+	<% else %>
+		toastr.error('Record not created...');
+	<% end %>
+<% end %>
+onAjaxScroll();

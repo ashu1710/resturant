@@ -1,0 +1,8 @@
+$('.new_area_btn').addClass("hide");
+$(".new_area_btn").after("<%= j render(partial: 'form', locals: { area: @area}) %>");
+validateareaForm();
+$(".btn-cancel-new-form").on('click', function(e){
+	$('.new_area_btn').removeClass("hide");
+	$('.panel-body').remove();
+});
+onAjaxScroll();

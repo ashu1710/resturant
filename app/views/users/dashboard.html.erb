@@ -1,0 +1,41 @@
+
+<%= render 'layouts/user_header' %>
+<!-- Home slider -->
+<section class="p-0">
+    <div class="slide-1 home-slider">
+        <% @banners.each do |banner| %>
+            <div>
+                <%= link_to banner.product_link_redirect do %>
+                    <div class="home  text-center">
+                        <%= image_tag banner.banner_image, class: 'bg-img blur-up lazyload' %>
+                    </div>
+                <% end %>
+            </div>
+        <% end %>
+    </div>
+</section>
+<!-- Home slider end -->
+
+<section class="p-0 ratio2_1">
+        <div class="container-fluid">
+            <div class="row category-border">
+                <% @categories.each do |category| %>
+                <% category_path = category.category_type.eql?("buying") ? sub_category_list_path(category) : product_list_path(category) %>
+                    <div class="col-sm-4 border-padding">
+                        <div class="category-banner">
+                            <div class="bg-size blur-up lazyloaded" style="background-image: url("<%=category.category_image %>"); background-size: cover; background-position: center center; display: block;">
+                                <%= image_tag category.category_image, class: "img-fluid blur-up lazyload bg-img", style: 'display: none;' %>
+                            </div>
+                            <div class="category-box">
+                                <%= link_to category_path do %>
+                                    <h2><%= category.name %></h2>
+                                <% end %>
+                            </div>
+                        </div>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </section>
+
+<%= render 'layouts/user_footer' %>

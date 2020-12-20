@@ -1,0 +1,5 @@
+<% if current_user.present? %>
+	toastr.success("Product Added to cart.");
+<% else %>
+	toastr.error("Please Login for add cart.");
+<% end %>

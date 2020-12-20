@@ -1,0 +1,7 @@
+<% if @isdone %>
+	$(".tr_<%= @booking.id %> .status").html("Confirmed");
+	toastr.success('Booking Confirmed Successfully');
+<% else %>
+	toastr.error('Booking not Confirmed');
+<% end %>
+onAjaxScroll();

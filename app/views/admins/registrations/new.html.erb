@@ -1,0 +1,38 @@
+<div class="container">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: 'login-form register-vendor' }) do |f| %>
+      <div class="login-wrap">
+        <p class="login-img"><i class="icon_lock_alt"></i></p>
+        <div class="input-group">
+            <span class="input-group-addon"><i class="icon_profile"></i></span>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "Email" %>
+        </div>
+        <div class="input-group">
+            <span class="input-group-addon"><i data-icon="&#xe021;"></i></span>
+            <%= f.number_field :mobile, autofocus: true, autocomplete: "mobile", class: "form-control", placeholder: "Mobile Number" %>
+        </div>
+
+        <div class="input-group">
+            <span class="input-group-addon"><i data-icon="&#xe021;"></i></span>
+            <%= f.text_field :address, autofocus: true, autocomplete: "address", class: "form-control", placeholder: "Address" %>
+        </div>
+
+        <div class="input-group">
+                <%= f.select(:city_id, @cities, {}, { :class => 'form-control', style: 'height: 100%;width: 40%;margin-right: 10px;' }) %>
+                <%= f.select(:area_id, [["Select City first", ""]], {}, { :class => 'form-control', style: 'height: 100%;width: 57%;' }) %>
+        </div>
+
+        <div class="input-group">
+            <span class="input-group-addon"><i class="icon_key_alt"></i></span>
+            <%= f.password_field :password, autocomplete: "new-password", class: 'form-control', placeholder: 'Password' %>
+        </div>
+        
+        <div class="input-group">
+            <span class="input-group-addon"><i class="icon_key_alt"></i></span>
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", placeholder: "Password Confirmation" %>
+        </div>
+
+        <%= f.submit "Signup", class: 'btn btn-primary btn-lg btn-block' %>
+        <%= link_to "Sign In", new_admin_session_path, class: 'btn btn-info btn-lg btn-block anchor-tag-link' %>
+      </div>
+    <% end %>
+</div>

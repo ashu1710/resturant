@@ -1,0 +1,64 @@
+<aside>
+    <div id="sidebar" class="nav-collapse ">
+        <ul class="sidebar-menu">                
+            <li>
+                <%= link_to admins_dashboard_index_path do %>
+                    <i class="icon_house_alt"></i>
+                    <span>Dashboard</span>
+                <% end %>
+            </li>
+            <li>
+                <%= link_to profile_path do %>
+                    <i class="icon_house_alt"></i>
+                    <span>My Profile</span>
+                <% end %>
+            </li>
+            <li>
+                <%= link_to '' do %>
+                    <i class="icon_house_alt"></i>
+                    <span>New Transaction</span>
+                <% end %>
+            </li>
+            <li>
+                <%= link_to '' do %>
+                    <i class="icon_house_alt"></i>
+                    <span>Begin Check by Name</span>
+                <% end %>
+            </li>
+            <li>                     
+                <%= link_to '' do %>
+                    <i class="icon_house_alt"></i>
+                    <span>Pick Up Check</span>
+                <% end %>
+            </li>
+
+            <li>                     
+                <%= link_to '' do %>
+                    <i class="icon_house_alt"></i>
+                    <span>Void</span>
+                <% end %>
+            </li>
+
+
+            <li>                     
+                <%= link_to '' do %>
+                    <i class="icon_house_alt"></i>
+                    <span>Cancel</span>
+                <% end %>
+            </li>
+
+            <li>                     
+                <%= link_to '' do %>
+                    <i class="icon_house_alt"></i>
+                    <span>Transaction Screen</span>
+                <% end %>
+            </li>
+            <li>
+                <%= link_to destroy_admin_session_path, method: :delete do %>
+                    <i class="icon_house_alt"></i>
+                    <span>Logout</span>
+                <% end %>
+            </li>
+        </ul>
+    </div>
+</aside>

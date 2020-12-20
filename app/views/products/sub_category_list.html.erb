@@ -1,0 +1,44 @@
+
+<%= render 'layouts/user_header' %>
+<section class="p-0 ratio2_1">
+    <div class="container-fluid">
+        <div class="row category-border">
+            <div class="col-lg-6 offset-lg-3 pb-4">
+                <div class="input-group">
+                    <input type="text" class="form-control search_box" aria-label="Search sub category" placeholder="Search sub category">
+                    <div class="input-group-append">
+                        <a class="btn btn-solid btn_search_sub_category" href="javascript:void(0)">
+                            <i class="fa fa-search"></i>Search
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <% @sub_category.each do |category| %>
+                <div class="col-sm-4 border-padding sub_category_details">
+                    <div class="category-banner">
+                        <div class="bg-size blur-up lazyloaded" style="background-image: url("<%=category.sub_category_image %>"); background-size: cover; background-position: center center; display: block;">
+                            <%= image_tag category.sub_category_image, class: "img-fluid blur-up lazyload bg-img", style: 'display: none;' %>
+                        </div>
+                        <div class="category-box">
+                            <%= link_to sub_category_product_list_path(category) do %>
+                                <h2><%= category.name %></h2>
+                            <% end %>
+                        </div>
+                    </div>
+                </div>
+            <% end %>
+            <div class="col-sm-4 border-padding no_category_found d-none">
+                <div class="category-banner">
+                    <div class="bg-size blur-up lazyloaded" style="background-image: url("<%= asset_path 'no_category.jpg' %>"); background-size: cover; background-position: center center; display: block;">
+                        <%= image_tag 'no_category.jpg', class: "img-fluid blur-up lazyload bg-img", style: 'display: none;' %>
+                    </div>
+                    <div class="category-box">
+                        <h2>Sub-category not found.</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<%= render 'layouts/user_footer' %>

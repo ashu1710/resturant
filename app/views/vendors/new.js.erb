@@ -1,0 +1,9 @@
+$('.new_vendor_btn').addClass("hide");
+$(".new_vendor_btn").after("<%= j render(partial: 'form') %>");
+validateVendorsForm();
+setArea();
+$(".btn-cancel-new-form").on('click', function(e){
+$('.new_vendor_btn').removeClass("hide");
+	$('.panel-body').remove();
+});
+onAjaxScroll();

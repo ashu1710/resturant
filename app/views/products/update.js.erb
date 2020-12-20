@@ -1,0 +1,9 @@
+$('.new_product_btn').removeClass("hide");
+$('.panel-body').remove();
+<% if @is_updated %>
+	$(".tr_<%= @product.id %>").replaceWith("<%= j render(partial: 'product_data', locals: {product: @product}) %>");
+	toastr.success('Record Updated Successfully');
+<% else %>
+	toastr.error('Record not updated...');
+<% end %>
+onAjaxScroll();

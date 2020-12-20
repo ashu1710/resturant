@@ -1,0 +1,8 @@
+$('.new_notification_btn').addClass("hide");
+$(".new_notification_btn").after("<%= j render(partial: 'form', locals: {notification: @notification}) %>");
+validateNotificationForm();
+$(".btn-cancel-new-form").on('click', function(e){
+	$('.new_notification_btn').removeClass("hide");
+	$('.panel-body').remove();
+});
+onAjaxScroll();

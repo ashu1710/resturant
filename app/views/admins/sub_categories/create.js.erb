@@ -1,0 +1,13 @@
+<% if @find_category.present? %>
+	toastr.error('Record already present!!!');
+<% else %>
+	$('.new_category_btn').removeClass("hide");
+	$('.panel-body').remove();
+	<% if @issaved %>
+		$(".table-sub-category tbody tr:first").before("<%= j render(partial: 'sub_category_data', locals: {sub_category: @sub_category}) %>");
+		toastr.success('Record Insert Successfully');
+	<% else %>
+		toastr.error('Record not created...');
+	<% end %>
+<% end %>
+onAjaxScroll();

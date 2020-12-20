@@ -1,0 +1,11 @@
+<% if @sub_categories.present? %>
+	$('.size_list, .color_list, .sub_category_label, #product_sub_category_id').removeClass('d-none');
+	$('#product_sub_category_id option').remove();
+	<% @sub_categories.each do |sub_category| %>
+		$('#product_sub_category_id').append("<option value='<%= sub_category.id %>'><%= sub_category.name %></option");
+	<% end %>
+<% else %>
+	$('.size_list, .color_list, .sub_category_label, #product_sub_category_id').addClass('d-none');
+	$('#product_sub_category_id').empty().append("<option value=''>Select Category first</option>");
+<% end %>
+onAjaxScroll();

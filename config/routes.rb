@@ -37,52 +37,52 @@ Rails.application.routes.draw do
 		end
 	end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-	resources :carts, only: [:index, :destroy]
-  	get 'carts/:id/add_cart', to: 'carts#add_cart', as: 'add_cart'
+	# resources :carts, only: [:index, :destroy]
+ #  	get 'carts/:id/add_cart', to: 'carts#add_cart', as: 'add_cart'
 	get 'profile', to: 'admins/dashboard#profile', as: 'profile'
-	resources :users
-	get '/my_account', to: 'users#my_account', as: 'my_account'
-	get '/about_us', to: 'users#about_us', as: 'about_us'
-	get '/contact_us', to: 'feedbacks#contact_us', as: 'contact_us'
+	# resources :users
+	# get '/my_account', to: 'users#my_account', as: 'my_account'
+	# get '/about_us', to: 'users#about_us', as: 'about_us'
+	# get '/contact_us', to: 'feedbacks#contact_us', as: 'contact_us'
 
-	get 'products/get_sub_category', to: 'products#get_sub_category'
-	get 'products/remove_attachments', to: 'products#remove_attachments'
-	resources :products
+	# get 'products/get_sub_category', to: 'products#get_sub_category'
+	# get 'products/remove_attachments', to: 'products#remove_attachments'
+	# resources :products
 	
-	get 'bookings/:id/accept_booking', to: 'bookings#accept_booking', as: 'accepts_booking'
-	get 'bookings/:id/reject_booking', to: 'bookings#reject_booking', as: 'rejects_booking'
-	resources :bookings
+	# get 'bookings/:id/accept_booking', to: 'bookings#accept_booking', as: 'accepts_booking'
+	# get 'bookings/:id/reject_booking', to: 'bookings#reject_booking', as: 'rejects_booking'
+	# resources :bookings
 
-	get 'orders/:id/accept_order', to: 'orders#accept_order', as: 'accepts_order'
-	get 'orders/:id/reject_order', to: 'orders#reject_order', as: 'rejects_order'
-	get '/order_success', to: 'orders#order_success', as: :order_success
-	resources :orders
-	resources :banners
-	get 'addresses/:id/user_address', to: 'addresses#user_address', as: :user_address
-	resources :addresses
+	# get 'orders/:id/accept_order', to: 'orders#accept_order', as: 'accepts_order'
+	# get 'orders/:id/reject_order', to: 'orders#reject_order', as: 'rejects_order'
+	# get '/order_success', to: 'orders#order_success', as: :order_success
+	# resources :orders
+	# resources :banners
+	# get 'addresses/:id/user_address', to: 'addresses#user_address', as: :user_address
+	# resources :addresses
 
-	get 'feedbacks/:id/show_feedback', to: 'feedbacks#show_feedback', as: 'show_feedback'
-	get '/address_details', to: 'feedbacks#address_details', as: 'address_details'
-	resources :feedbacks
-	resources :notifications
-	namespace :admins do
-	  resources :categories, :sub_categories
-	end
-	get 'vendors/get_area', to: 'vendors#get_area'
-	get 'vendors/set_seq_no', to: 'vendors#set_seq_no'
-	get 'products/:id/first_product', to: 'products#first_product', as: 'first_product'
-	get 'products/:id/sub_category_list', to: 'products#sub_category_list', as: 'sub_category_list'
-	get 'products/:id/product_list', to: 'products#product_list', as: 'product_list'
-	get '/product_filter', to: 'users#product_filter'
-	get '/product_search', to: 'users#product_search'
-	get '/product_sub_filter', to: 'users#product_sub_filter'
-	get 'products/:id/sub_category_product_list', to: 'products#sub_category_product_list', as: 'sub_category_product_list'
-	get 'products/:id/product_details', to: 'products#product_details', as: 'product_details'
-	resources :vendors
-	resources :cities
-	resources :areas
-	resources :colors
-	resources :sizes
+	# get 'feedbacks/:id/show_feedback', to: 'feedbacks#show_feedback', as: 'show_feedback'
+	# get '/address_details', to: 'feedbacks#address_details', as: 'address_details'
+	# resources :feedbacks
+	# resources :notifications
+	# namespace :admins do
+	#   resources :categories, :sub_categories
+	# end
+	# get 'vendors/get_area', to: 'vendors#get_area'
+	# get 'vendors/set_seq_no', to: 'vendors#set_seq_no'
+	# get 'products/:id/first_product', to: 'products#first_product', as: 'first_product'
+	# get 'products/:id/sub_category_list', to: 'products#sub_category_list', as: 'sub_category_list'
+	# get 'products/:id/product_list', to: 'products#product_list', as: 'product_list'
+	# get '/product_filter', to: 'users#product_filter'
+	# get '/product_search', to: 'users#product_search'
+	# get '/product_sub_filter', to: 'users#product_sub_filter'
+	# get 'products/:id/sub_category_product_list', to: 'products#sub_category_product_list', as: 'sub_category_product_list'
+	# get 'products/:id/product_details', to: 'products#product_details', as: 'product_details'
+	# resources :vendors
+	# resources :cities
+	# resources :areas
+	# resources :colors
+	# resources :sizes
 	devise_for :admins, path: 'admins', controllers: { sessions: "admins/sessions", registrations: "admins/registrations" }
 	patch 'admins/dashboard/update_profile', to: 'admins/dashboard#update_profile'
 	patch 'admins/dashboard/change_password', to: 'admins/dashboard#change_password'

@@ -87,6 +87,7 @@ Rails.application.routes.draw do
 	patch 'admins/dashboard/update_profile', to: 'admins/dashboard#update_profile'
 	patch 'admins/dashboard/change_password', to: 'admins/dashboard#change_password'
 	get 'admins/dashboard/index', to: 'admins/dashboard#index'
+	get 'admins/transactions/index', to: 'admins/transactions#index'
 	get 'admins/other_management', to: 'admins/dashboard#other_management'
 
 	get '/private_policy', to: 'addresses#private_policy'

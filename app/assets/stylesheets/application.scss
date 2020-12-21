@@ -11,15 +11,12 @@
  * It is generally better to create a new file per style scope.
  *
  *= require_self
- *= require users/css/slick.css
- *= require users/css/slick-theme.css
- *= require users/css/animate.css
- *= require users/css/themify-icons.css
- *= require users/css/bootstrap.css
- *= require users/css/color1.css
+ *= require css/bootstrap.min.css
+ *= require css/bootstrap-theme.css
  *= require bootstrap-datepicker3
  *= require jquery.timepicker.css
  *= require toastr
+ *= require css/style_ar.css
  
  */
  @import "font-awesome";

@@ -231,13 +231,6 @@ select.selectpicker{
 }
 
 .foodtop ul {
-  list-style-type: none;
-  margin: 0;
-      font-size: 18px;
- padding: 18px;
- border-radius: 5px;
-  overflow: hidden;
-  background-color: #e9f0f8;;
 }
 
 .foodtop li {

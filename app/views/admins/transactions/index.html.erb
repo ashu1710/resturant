@@ -13,7 +13,8 @@
             <li class="active"><a href="#">Dashboard</a></li>
             <li><a href="order_screen.html"><i class="fa fa-desktop"></i>Order Screen</a></li>
             <li><a href="#"><i class="fa fa-cutlery"></i>Pickup Table</a></li>
-            <li><a href="#"><i class="fa fa-ship"></i>cover</a></li>
+            <li><a href="#"><i class="fa fa-ship"></i>Cover</a></li>
+            <li><a href="#"><i class="fa fa-ship"></i>Seat</a></li>
             <li><a href="#"><i class="fa fa-shopping-bag"></i>Take Out</a></li>
             <li><a href="#"><i class="fa fa-sign-in" aria-hidden="true"></i>Enter</a></li>
             <li><a href="#"><i class="fa fa-times-circle-o" aria-hidden="true"></i>Clear</a></li>
@@ -40,9 +41,14 @@
          </div>
          <ul class="nav nav-pills nav-stacked">
             <li class="active"><a href="#">Dashboard</a></li>
-            <li><a href="order_screen.html"><i class="fa fa-desktop"></i>Order Screen</a></li>
+            <li>
+               <%= link_to admins_dashboard_index_path do %>
+                  <i class="fa fa-desktop"></i>Order Screen
+               <% end %>
+            </li>
             <li><a href="#"><i class="fa fa-cutlery"></i>Pickup Table</a></li>
-            <li><a href="#"><i class="fa fa-ship"></i>cover</a></li>
+            <li><a href="#"><i class="fa fa-ship"></i>Cover</a></li>
+            <li><a href="#"><i class="fa fa-ship"></i>Seat</a></li>
             <li><a href="#"><i class="fa fa-shopping-bag"></i>Take Out</a></li>
             <li><a href="#"><i class="fa fa-sign-in" aria-hidden="true"></i>Enter</a></li>
             <li><a href="#"><i class="fa fa-times-circle-o" aria-hidden="true"></i>Clear</a></li>
@@ -100,7 +106,6 @@
                   <li><a class="active" href="#home">Food</a></li>
                   <li><a href="#news">Beverages</a></li>
                   <li><a href="#contact">Bab Areesh</a></li>
-                  <li><a href="#about">Additionalt</a></li>
                   <li><a href="#home">Open Item's</a></li>
                   <li><a href="#news">Condiment's</a></li>
                   <li><a href="#contact">Payment</a></li>
